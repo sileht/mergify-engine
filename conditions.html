@@ -189,7 +189,11 @@ on the repository.</p></td>
 <td><p>Boolean</p></td>
 <td><p>Whether the pull request is closed.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">commented-reviews-by</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conflict</span></code></p></td>
+<td><p>Boolean</p></td>
+<td><p>Whether the pull request is conflicting with its base branch.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">commented-reviews-by</span></code></p></td>
 <td><p>array of string</p></td>
 <td><p>The list of GitHub user or team login that have commented in a review
 for the pull request.
@@ -197,7 +201,7 @@ Team logins are prefixed with the <code class="docutils literal notranslate"><sp
 This will match only reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
 on the repository.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">dismissed-reviews-by</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dismissed-reviews-by</span></code></p></td>
 <td><p>array of string</p></td>
 <td><p>The list of GitHub user or team login that have their review dismissed
 in the pull request.
@@ -205,43 +209,43 @@ Team logins are prefixed with the <code class="docutils literal notranslate"><sp
 This will match only reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
 on the repository.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">files</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">files</span></code></p></td>
 <td><p>string</p></td>
 <td><p>The files that are modified, deleted or added by the pull request.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">head</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">head</span></code></p></td>
 <td><p>string</p></td>
 <td><p>The name of the branch where the pull request changes are implemented.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
 <td><p>array of string</p></td>
 <td><p>The list of labels of the pull request.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">locked</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">locked</span></code></p></td>
 <td><p>Boolean</p></td>
 <td><p>Whether the pull request is locked.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">merged</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">merged</span></code></p></td>
 <td><p>Boolean</p></td>
 <td><p>Whether the pull request is merged.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">merged-by</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">merged-by</span></code></p></td>
 <td><p>string</p></td>
 <td><p>The GitHub user or team login that merged the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">milestone</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">milestone</span></code></p></td>
 <td><p>string</p></td>
 <td><p>The milestone title associated to the pull request.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">review-requested</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">review-requested</span></code></p></td>
 <td><p>array of string</p></td>
 <td><p>The list of GitHub user or team login that were requested to review the
 pull request. Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character.
 This will match only reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
 on the repository.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status-success</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status-success</span></code></p></td>
 <td><p>array of string</p></td>
 <td><p>The list of status checks that successfuly passed for the pull request.
 This is the name of a <em>status check</em> such as
@@ -249,7 +253,7 @@ This is the name of a <em>status check</em> such as
 <cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-check-name">About status check name</a> for more
 details.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status-neutral</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status-neutral</span></code></p></td>
 <td><p>array of string</p></td>
 <td><p>The list of status checks that are neutral for the pull request.
 This is the name of a <em>status check</em> such as
@@ -257,7 +261,7 @@ This is the name of a <em>status check</em> such as
 <cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-check-name">About status check name</a> for more
 details.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status-failure</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status-failure</span></code></p></td>
 <td><p>array of string</p></td>
 <td><p>The list of status checks that failed for the pull request.
 This is the name of a <em>status check</em> such as
@@ -265,7 +269,7 @@ This is the name of a <em>status check</em> such as
 <cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-check-name">About status check name</a> for more
 details.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
 <td><p>string</p></td>
 <td><p>The title of the pull request.</p></td>
 </tr>
