@@ -54,6 +54,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Actions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#assign">assign</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backport">backport</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#comment">comment</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#close">close</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#delete-head-branch">delete_head_branch</a></li>
@@ -181,6 +182,37 @@ parameter:</p>
 </table>
 <p>Once the backporting pull request is closed or merged, Mergify will
 automatically delete the backport head branch that it created.</p>
+</div>
+<div class="section" id="copy">
+<h2>copy<a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">copy</span></code> action creates a copy of the pull request targetting other branches.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Name</p></th>
+<th class="head"><p>Value Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Value Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">branches</span></code></p></td>
+<td><p>array of string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td><p>The list of branches the pull request should be copied to.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">regexes</span></code></p></td>
+<td><p>array of string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td><p>The list of regexes to find branches the pull request should be copied to.</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="section" id="comment">
 <span id="comment-action"></span><h2>comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h2>
