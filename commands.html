@@ -1,0 +1,167 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Commands &#8212; Mergify.io  documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Strict Merge" href="strict-workflow.html" />
+    <link rel="prev" title="Actions" href="actions.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<p class="logo">
+  <a href="index.html">
+    <img class="logo" src="_static/logo.png" alt="Logo"/>
+    
+    <h1 class="logo logo-name">Mergify.io</h1>
+    
+  </a>
+</p>
+
+
+
+<p class="blurb">Stop merging your pull requests manually.</p>
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration File Format</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditions.html">Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#rebase">rebase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backport">backport</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="strict-workflow.html">Strict Merge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="badge.html">Badge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+
+<hr />
+<ul>
+    
+    <li class="toctree-l1"><a href="https://mergify.io">Website</a></li>
+    
+    <li class="toctree-l1"><a href="mailto:support@mergify.io">Support</a></li>
+    
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="actions.html" title="previous chapter">Actions</a></li>
+      <li>Next: <a href="strict-workflow.html" title="next chapter">Strict Merge</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="commands">
+<span id="id1"></span><h1>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference internal" href="actions.html#actions"><span class="std std-ref">Actions</span></a> can be run directly by commenting on a pull request. The syntax is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@Mergifyio [parameters …]
+</pre></div>
+</div>
+<p>The list of available commands is listed below, with their parameters:</p>
+<div class="section" id="rebase">
+<span id="rebase-command"></span><h2>rebase<a class="headerlink" href="#rebase" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Will run the <a class="reference internal" href="actions.html#rebase-action"><span class="std std-ref">rebase</span></a> action.</p>
+</div></blockquote>
+<table class="colwidths-given docutils align-left">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 88%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Syntax</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;Mergifyio</span> <span class="pre">rebase</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Example</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;Mergifyio</span> <span class="pre">rebase</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="backport">
+<span id="backport-command"></span><h2>backport<a class="headerlink" href="#backport" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>Will run the <a class="reference internal" href="actions.html#backport-action"><span class="std std-ref">backport</span></a> action.</p>
+</div></blockquote>
+<table class="colwidths-given docutils align-left">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 88%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Syntax</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;Mergifyio</span> <span class="pre">backport</span> <span class="pre">&lt;branch</span> <span class="pre">name&gt;</span> <span class="pre">&lt;branch</span> <span class="pre">name</span> <span class="pre">2&gt;</span> <span class="pre">…</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Example</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;Mergifyio</span> <span class="pre">backport</span> <span class="pre">stable/3.1</span> <span class="pre">stable/4.0</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2019, Mergify.io.
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

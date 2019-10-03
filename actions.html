@@ -15,7 +15,7 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Strict Merge" href="strict-workflow.html" />
+    <link rel="next" title="Commands" href="commands.html" />
     <link rel="prev" title="Conditions" href="conditions.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -62,8 +62,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#label">label</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#merge">merge</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#request-reviews">request_reviews</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rebase">rebase</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strict-workflow.html">Strict Merge</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Example Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="badge.html">Badge</a></li>
@@ -84,7 +86,7 @@
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
       <li>Previous: <a href="conditions.html" title="previous chapter">Conditions</a></li>
-      <li>Next: <a href="strict-workflow.html" title="next chapter">Strict Merge</a></li>
+      <li>Next: <a href="commands.html" title="next chapter">Commands</a></li>
   </ul></li>
 </ul>
 </div>
@@ -472,6 +474,12 @@ For example:</p>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="rebase">
+<span id="rebase-action"></span><h2>rebase<a class="headerlink" href="#rebase" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">rebase</span></code> action will rebase the pull request against its base branch.</p>
+<p>Be aware that rebasing will force-push to the pull request head branch: any
+change done to the pull request while Mergify is rebasing will be lost.</p>
 <div class="section" id="git-merge-workflow-and-mergify-equivalent-configuration">
 <h3>Git merge workflow and Mergify equivalent configuration<a class="headerlink" href="#git-merge-workflow-and-mergify-equivalent-configuration" title="Permalink to this headline">¶</a></h3>
 <p>Examples without <cite>strict: true</cite> are obviously not recommended, more information
