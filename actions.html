@@ -436,6 +436,9 @@ force push the rebased pull request.</p></li>
 </tr>
 </tbody>
 </table>
+<p>Note that Mergify will always respect the branch protection settings. When the
+conditions match and the <code class="docutils literal notranslate"><span class="pre">merge</span></code> action runs, Mergify waits for the
+branch protection to be validated before really merging the pull request.</p>
 <p>When a pull request is merged using the squash or merge method, Mergify uses
 the default commit message provided by GitHub. You can override the commit
 message by adding a section in the pull request body. The section must start
