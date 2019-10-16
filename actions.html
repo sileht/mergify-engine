@@ -56,6 +56,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#backport">backport</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#copy">copy</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#comment">comment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#review">review</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#close">close</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#delete-head-branch">delete_head_branch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#dismiss-reviews">dismiss_reviews</a></li>
@@ -235,6 +236,37 @@ automatically delete the backport head branch that it created.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
+<td><p>string</p></td>
+<td><p>None</p></td>
+<td><p>The message to write as a comment.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="review">
+<span id="review-action"></span><h2>review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">review</span></code> action reviews the pull request.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Name</p></th>
+<th class="head"><p>Value Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Value Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">APPROVE</span></code></p></td>
+<td><p>The kind of review, can be <code class="docutils literal notranslate"><span class="pre">APPROVE</span></code>, <code class="docutils literal notranslate"><span class="pre">REQUEST_CHANGES</span></code>, <code class="docutils literal notranslate"><span class="pre">COMMENT</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
 <td><p>string</p></td>
 <td><p>None</p></td>
 <td><p>The message to write as a comment.</p></td>
