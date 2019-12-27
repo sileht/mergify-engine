@@ -362,6 +362,14 @@ this checks succeed before doing any action should be written as:</p>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=Uno.UI - CI</span>
 </pre></div>
 </div>
+<p>Github Actions are the only exception:</p>
+<img alt="Status check Github Action example" src="_images/status-check-gh-example.png" />
+<p>In this example only the GitHub Action job name should be used,
+<code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">job</span> <span class="pre">to</span> <span class="pre">say</span> <span class="pre">hello</span></code> here. The condition will be:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=A job to say hello</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
