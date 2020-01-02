@@ -81,8 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#grammar">Grammar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#attribute-list">Attribute List</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#operators-list">Operators List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#about-status-check-name">About status check name</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#status-check-name">Status Check Name</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
@@ -104,7 +103,7 @@
 <span id="id1"></span><h1>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h1>
 <p>Conditions are used in pull request rules to check if a pull request matches a
 certain rule. If a pull request matches all of the listed conditions in a rule,
-the subsequent action listed in that rule will be applied. Conditions must be
+the subsequent actions listed in that rule will be applied. Conditions must be
 listed under the <code class="docutils literal notranslate"><span class="pre">conditions</span></code> section of the <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> entries —
 see <a class="reference internal" href="configuration.html#configuration-file-format"><span class="std std-ref">Configuration File Format</span></a>.</p>
 <div class="section" id="grammar">
@@ -113,31 +112,42 @@ see <a class="reference internal" href="configuration.html#configuration-file-fo
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span> <span class="s2">&quot;-&quot;</span> <span class="p">]</span> <span class="p">[</span> <span class="s2">&quot;#&quot;</span> <span class="p">]</span> <span class="o">&lt;</span><span class="n">attribute</span><span class="o">&gt;</span> <span class="p">[</span> <span class="o">&lt;</span><span class="n">operator</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">value</span><span class="o">&gt;</span> <span class="p">]</span>
 </pre></div>
 </div>
-<p>An <code class="docutils literal notranslate"><span class="pre">attribute</span></code> is a property of a pull request, such as its author, its title
-or its base branch. An <code class="docutils literal notranslate"><span class="pre">operator</span></code> is used to determine how the match between
-the pull request’s <code class="docutils literal notranslate"><span class="pre">attribute</span></code> and the defined <code class="docutils literal notranslate"><span class="pre">value</span></code> will occur.</p>
-<p>For example, the condition <code class="docutils literal notranslate"><span class="pre">author=jd</span></code> will be evaluated to true if the
-GitHub login of the author of the pull request is <code class="docutils literal notranslate"><span class="pre">jd</span></code>. The condition
-<code class="docutils literal notranslate"><span class="pre">base~=^stable/</span></code> will match any pull request whose base branch matches the
-regular expression <code class="docutils literal notranslate"><span class="pre">^stable/</span></code>.</p>
-<p>The special <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix indicates to consider the length of the attribute
-rather than its content. For example, <code class="docutils literal notranslate"><span class="pre">approved-reviews-by=sileht</span></code> will match
-if the user <code class="docutils literal notranslate"><span class="pre">sileht</span></code> approved the pull request. However,
-<code class="docutils literal notranslate"><span class="pre">#approved-reviews-by&gt;=2</span></code> will match if at least 2 collaborators approved the
-pull request.</p>
+<ul class="simple">
+<li><p>The optional <code class="docutils literal notranslate"><span class="pre">-</span></code> prefix is equivalent to the <cite>not</cite> operator.</p></li>
+<li><p>The optional <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix indicates to consider the length of the attribute
+value rather than its content.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">attribute</span></code> is a property of a pull request, such as its author, its
+title or its base branch.</p></li>
+<li><p>An <code class="docutils literal notranslate"><span class="pre">operator</span></code> is used to determine how the match between the pull request’s
+<code class="docutils literal notranslate"><span class="pre">attribute</span></code> and the defined <code class="docutils literal notranslate"><span class="pre">value</span></code> occurs.</p></li>
+</ul>
+<p>For example:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">author=jd</span></code> evaluates to true if the GitHub login of the author of the pull
+request is <code class="docutils literal notranslate"><span class="pre">jd</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">base~=^stable/</span></code> matches any pull request whose base branch matches the
+regular expression <code class="docutils literal notranslate"><span class="pre">^stable/</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">approved-reviews-by=sileht</span></code> matches if the user <code class="docutils literal notranslate"><span class="pre">sileht</span></code> is in the list
+of contributors who approved the pull request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">#approved-reviews-by&gt;=2</span></code> matches if at least 2 collaborators approved the
+pull request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-merged</span></code> matches if the pull requested has not been merged.</p></li>
+</ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> character is considered as the comment delimiter in YAML. <code class="docutils literal notranslate"><span class="pre">#</span></code> is
-also the length operator in Mergify’s conditions system, therefore don’t
-forget to use <code class="docutils literal notranslate"><span class="pre">&quot;</span></code> around the condition.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">#</span></code> character is considered as a comment delimiter in YAML. As <code class="docutils literal notranslate"><span class="pre">#</span></code>
+is the length operator in Mergify’s conditions system, don’t forget to use
+<code class="docutils literal notranslate"><span class="pre">&quot;</span></code> around the condition to write valid YAML syntax.</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">operator</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> are not mandatory if the <code class="docutils literal notranslate"><span class="pre">attribute</span></code> type is
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">operator</span></code> and <code class="docutils literal notranslate"><span class="pre">value</span></code> are only optional if the <code class="docutils literal notranslate"><span class="pre">attribute</span></code> type is
 <code class="docutils literal notranslate"><span class="pre">Boolean</span></code>.</p>
-<p>The special <code class="docutils literal notranslate"><span class="pre">-</span></code> prefix is equivalent to the <cite>not</cite> operator.</p>
+</div>
 </div>
 <div class="section" id="attribute-list">
 <h2>Attribute List<a class="headerlink" href="#attribute-list" title="Permalink to this headline">¶</a></h2>
-<p>Here’s the list of pull request attribute that rules can be matched against:</p>
+<p>Here’s the list of pull request attribute that can be used in conditions:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 25%" />
@@ -162,7 +172,7 @@ repository organization.</p></td>
 <td><p>The list of GitHub user or team login that approved the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
 repository organization.
-This will match only reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
+This only matches reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
 on the repository.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">author</span></code></p></td>
@@ -185,7 +195,7 @@ repository organization.</p></td>
 review for the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
 repository organization.
-This will match only reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
+This only matches reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
 on the repository.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">closed</span></code></p></td>
@@ -202,7 +212,7 @@ on the repository.</p></td>
 for the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
 repository organization.
-This will match only reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
+This only matches reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
 on the repository.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dismissed-reviews-by</span></code></p></td>
@@ -211,9 +221,8 @@ on the repository.</p></td>
 in the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
 repository organization.
-This will match only reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
-on the repository.
-Only teams of the repository owner will works</p></td>
+This only matches reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
+on the repository.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">files</span></code></p></td>
 <td><p>string</p></td>
@@ -251,7 +260,7 @@ repository organization.</p></td>
 pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
 repository organization.
-This will match only reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
+This only matches reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
 on the repository.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status-success</span></code></p></td>
@@ -259,7 +268,7 @@ on the repository.</p></td>
 <td><p>The list of status checks that successfuly passed for the pull request.
 This is the name of a <em>status check</em> such as
 <cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
-<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-check-name">About status check name</a> for more
+<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#status-check-name">Status Check Name</a> for more
 details.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status-neutral</span></code></p></td>
@@ -267,7 +276,7 @@ details.</p></td>
 <td><p>The list of status checks that are neutral for the pull request.
 This is the name of a <em>status check</em> such as
 <cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
-<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-check-name">About status check name</a> for more
+<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#status-check-name">Status Check Name</a> for more
 details.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status-failure</span></code></p></td>
@@ -275,7 +284,7 @@ details.</p></td>
 <td><p>The list of status checks that failed for the pull request.
 This is the name of a <em>status check</em> such as
 <cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
-<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-check-name">About status check name</a> for more
+<cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#status-check-name">Status Check Name</a> for more
 details.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
@@ -342,18 +351,14 @@ the <code class="docutils literal notranslate"><span class="pre">#</span></code>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>For all <cite>reviewers</cite> related attributes, only users with <cite>write</cite> or <cite>admin</cite>
-permission on the repository are used, others are ignored.</p>
 </div>
-</div>
-<div class="section" id="about-status-check-name">
-<h2>About status check name<a class="headerlink" href="#about-status-check-name" title="Permalink to this headline">¶</a></h2>
-<p>When using the <code class="docutils literal notranslate"><span class="pre">status-success</span></code> and <code class="docutils literal notranslate"><span class="pre">status-failure</span></code> conditions, you need
-to use the name of your check service.</p>
-<p>This can be find by opening an existing pull request and scrolling down near
-the <code class="docutils literal notranslate"><span class="pre">Merge</span></code> button.</p>
+<div class="section" id="status-check-name">
+<h2>Status Check Name<a class="headerlink" href="#status-check-name" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="generic-status-check">
+<h3>Generic Status Check<a class="headerlink" href="#generic-status-check" title="Permalink to this headline">¶</a></h3>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">status-success</span></code>, <code class="docutils literal notranslate"><span class="pre">status-neutral</span></code> and <code class="docutils literal notranslate"><span class="pre">status-failure</span></code>
+conditions, you need to use the name of your check service. This can be find by
+opening an existing pull request and scrolling down near the <code class="docutils literal notranslate"><span class="pre">Merge</span></code> button.</p>
 <img alt="Status check example" src="_images/status-check-example.png" />
 <p>The name of the status check is written in bold on the left side. In the
 example above, it should be <code class="docutils literal notranslate"><span class="pre">Uno.UI</span> <span class="pre">-</span> <span class="pre">CI</span></code>. A condition that would make sure
@@ -362,47 +367,15 @@ this checks succeed before doing any action should be written as:</p>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=Uno.UI - CI</span>
 </pre></div>
 </div>
-<p>Github Actions are the only exception:</p>
-<img alt="Status check Github Action example" src="_images/status-check-gh-example.png" />
-<p>In this example only the GitHub Action job name should be used,
-<code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">job</span> <span class="pre">to</span> <span class="pre">say</span> <span class="pre">hello</span></code> here. The condition will be:</p>
+</div>
+<div class="section" id="github-actions">
+<h3>GitHub Actions<a class="headerlink" href="#github-actions" title="Permalink to this headline">¶</a></h3>
+<p>GitHub Actions works slightly differently. To match a status check when using
+GitHub Action, only the job name is used.</p>
+<img alt="Status check GitHub Action example" src="_images/status-check-gh-example.png" />
+<p>In the example above, it would be <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">job</span> <span class="pre">to</span> <span class="pre">say</span> <span class="pre">hello</span></code>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=A job to say hello</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="matching-pull-requests-passing-travis-and-being-approved">
-<h3>Matching Pull Requests Passing Travis and Being Approved<a class="headerlink" href="#matching-pull-requests-passing-travis-and-being-approved" title="Permalink to this headline">¶</a></h3>
-<p>Those conditions will match any pull request that has been approved by two
-reviewers and where Travis CI passes.</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;#approved-reviews-by&gt;=2&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=continuous-integration/travis-ci/pr</span>
-</pre></div>
-</div>
-<p>If you want to ignore pull request that has a negative review, you can enhance
-this condition set like this:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;#approved-reviews-by&gt;=2&quot;</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=continuous-integration/travis-ci/pr</span>
-  <span class="p p-Indicator">-</span> <span class="s">&quot;#changes-requested-reviews-by=0&quot;</span>
-</pre></div>
-</div>
-<p>This can make sure that any pull request that has a change for request in a
-review is not matched.</p>
-</div>
-<div class="section" id="matching-merged-pull-requests">
-<h3>Matching Merged Pull Requests<a class="headerlink" href="#matching-merged-pull-requests" title="Permalink to this headline">¶</a></h3>
-<p>Matching merged pull requests is straight forward:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">merged</span>
-</pre></div>
-</div>
-<p>On the other hand, matching unmerged pull requests can be done with:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-merged</span>
 </pre></div>
 </div>
 </div>
