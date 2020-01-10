@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>Configuration File Format &#8212; Mergify  documentation</title>
+    <title>Configuration File &#8212; Mergify  documentation</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   
@@ -59,7 +59,7 @@
   <nav class="related d-flex justify-content-between flex-wrap" role="navigation" aria-label="related navigation">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="index.html">Mergify  documentation</a></li>
-    <li class="breadcrumb-item active">Configuration File Format</li>
+    <li class="breadcrumb-item active">Configuration File</li>
   </ol>
   <div>
     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -76,8 +76,9 @@
     <div class="row">
       <div class="sphinxsidebar col-12 col-lg-3 col-xl-2" aria-label="main navigation"><ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration File Format</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration File</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#file-used">File Used</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#format">Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a></li>
 </ul>
 </li>
@@ -97,14 +98,28 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="configuration-file-format">
-<span id="id1"></span><h1>Configuration File Format<a class="headerlink" href="#configuration-file-format" title="Permalink to this headline">¶</a></h1>
-<p>The configuration file for Mergify should be named <code class="docutils literal notranslate"><span class="pre">.mergify.yml</span></code> or
-<code class="docutils literal notranslate"><span class="pre">.mergify/config.yml</span></code> and must be placed in the root directory of your GitHub
-repository. Mergify uses the default repository branch configured on GitHub to
-read the configuration file — usually <code class="docutils literal notranslate"><span class="pre">master</span></code>. The file format is <a class="reference external" href="http://yaml.org/">YAML</a>.</p>
-<p>The file main entry is a dictionary whose key is named <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>.
-The value of the <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> key must be a list of dictionary.</p>
+  <div class="section" id="configuration-file">
+<span id="configuration-file-format"></span><h1>Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="file-used">
+<h2>File Used<a class="headerlink" href="#file-used" title="Permalink to this headline">¶</a></h2>
+<p>Mergify uses the configuration file that is:</p>
+<ul class="simple">
+<li><p>The file named <code class="docutils literal notranslate"><span class="pre">.mergify.yml</span></code>, or, as a fallback, <code class="docutils literal notranslate"><span class="pre">.mergify/config.yml</span></code>
+from the root directory.</p></li>
+<li><p>In the the default repository branch configured on GitHub — usually
+<code class="docutils literal notranslate"><span class="pre">master</span></code>.</p></li>
+</ul>
+</div>
+<div class="section" id="format">
+<h2>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h2>
+<p>Here’s what you need to know about the file format:</p>
+<ul class="simple">
+<li><p>The file format is <a class="reference external" href="http://yaml.org/">YAML</a>.</p></li>
+<li><p>The file main type is a dictionary whose only key is named
+<code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>.</p></li>
+<li><p>The value type of the <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> is list.</p></li>
+<li><p>Each entry in <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> must be a dictionary.</p></li>
+</ul>
 <p>Each dictionary must have the following keys:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -136,32 +151,17 @@ matching pull requests.</p></td>
 </tr>
 </tbody>
 </table>
-<p>The rules are evaluated in the order they are defined and, therefore, the
-actions are executed in that same order.</p>
-<div class="section" id="example">
-<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Here’s a simple example of a configuration file:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge when CI passes and 2 reviews</span>
-    <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="s">&quot;#approved-reviews-by&gt;=2&quot;</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=Travis CI - Pull Request</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">base=master</span>
-    <span class="nt">actions</span><span class="p">:</span>
-      <span class="nt">merge</span><span class="p">:</span>
-        <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
-</pre></div>
-</div>
-<p>See <a class="reference internal" href="examples.html#examples"><span class="std std-ref">Example Rules</span></a> for more examples.</p>
+<p>The rules are evaluated in the order they are defined in <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>
+and, therefore, the actions are executed in that same order.</p>
+<p>See <a class="reference internal" href="examples.html#examples"><span class="std std-ref">Example Rules</span></a> for configuration file examples.</p>
 </div>
 <div class="section" id="validation">
 <h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
-<p>Usually, changes to the configuration file should be done via a pull request,
-in order for Mergify to validate it.</p>
-<p>However if you are creating the initial configuration or want to validate it
-locally before sending a pull request, you can use:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> &lt;my_project&gt;
-$ curl -F <span class="s1">&#39;data=@.mergify.yml&#39;</span> https://gh.mergify.io/validate
+<p>Changes to the configuration file should be done via a pull request in order
+for Mergify to validate it via a GitHub check.</p>
+<p>However, if you want to validate your configuration file before sending a pull
+request, you can use the following command line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -F <span class="s1">&#39;data=@.mergify.yml&#39;</span> https://gh.mergify.io/validate
 </pre></div>
 </div>
 <p>Or by uploading the configuration file with this form:</p>
