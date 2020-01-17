@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <title>Delving into the Merge Action &#8212; Mergify  documentation</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  
+    <link rel="stylesheet" href="_static/basic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/mergify.css" type="text/css" />
+
+  
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script type="text/javascript" src="_static/mergify.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example Rules" href="examples.html" />
+    <link rel="prev" title="Commands" href="commands.html" /> 
+  </head><body>
+<div class="body-container">
+  <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white flex-wrap">
+  <a class="navbar-brand" href="index.html">
+    <img class="logo" src="_static/mergify-logo-horizontal.png" alt="Mergify"/>
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#exCollapsingNavbar2">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="navbar-collapse collapse" id="exCollapsingNavbar2">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="https://mergify.io" target="_blank">Mergify.io</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://dashboard.mergify.io" target="_blank">Dashboard</a>
+      </li>
+    </ul>
+    <div class="dropdown-divider d-block d-sm-none mb-4"></div>
+    <form class="form-inline" action="search.html" method="get">
+      <input type="text" name="q" class="form-control mr-sm-2" placeholder="Search" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
+  <nav class="related d-flex justify-content-between flex-wrap" role="navigation" aria-label="related navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="index.html">Mergify  documentation</a></li>
+    <li class="breadcrumb-item active">Delving into the Merge Action</li>
+  </ol>
+  <div>
+    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
+      <a href="commands.html" title="Previous Chapter: Commands" class="btn btn-primary" role="button" accesskey="P">
+        &laquo; Commands
+      </a>
+      <a href="examples.html" title="Next Chapter: Example Rules" class="btn btn-primary" role="button" accesskey="N">
+        Example Rules &raquo;
+      </a>
+    </div>
+  </div>
+</nav>
+  <div class="main container-fluid">
+    <div class="row">
+      <div class="sphinxsidebar col-12 col-lg-3 col-xl-2" aria-label="main navigation"><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration File</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditions.html">Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Delving into the Merge Action</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#strict-merge">Strict Merge</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#git-merge-workflow-and-mergify-equivalent-configuration">Git merge workflow and Mergify equivalent configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="badge.html">Badge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+
+
+      </div>
+      <div class="document col-12 col-lg-9 col-xl-10">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="delving-into-the-merge-action">
+<span id="mastering-merge"></span><h1>Delving into the Merge Action<a class="headerlink" href="#delving-into-the-merge-action" title="Permalink to this headline">¶</a></h1>
+<p>Mergify comes with some powerful options when it comes to merging your pull
+requests. While all the options are listed in the <a class="reference internal" href="actions.html#merge-action"><span class="std std-ref">merge</span></a> action
+documentation, some of the combinations are detailed here.</p>
+<div class="section" id="strict-merge">
+<span id="id1"></span><h2>Strict Merge<a class="headerlink" href="#strict-merge" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>strict merge</cite> option enables a workflow that prevents merging broken
+pull requests. That situation can arise when outdated pull requests are being
+merged in their base branch.</p>
+<div class="section" id="understanding-the-problem">
+<h3>Understanding the Problem<a class="headerlink" href="#understanding-the-problem" title="Permalink to this headline">¶</a></h3>
+<p>To understand the problem, imagine the following situation:</p>
+<ul class="simple">
+<li><p>The base branch (e.g., <code class="docutils literal notranslate"><span class="pre">master</span></code>) has its continuous integration testing
+passing correctly.</p></li>
+<li><p>A pull request is created, which also passes the CI.</p></li>
+</ul>
+<p>The state of the repository can be represented like this:</p>
+<div class="figure align-default">
+<img alt="Pull request is open" src="_images/master-pr-ci-pass.png" />
+</div>
+<p>While the pull request is open, another commit is pushed to <code class="docutils literal notranslate"><span class="pre">master</span></code> — let’s
+call it <cite>new commit</cite>. That can be a local commit or a merge commit from another
+pull request; who knows. The tests are run against <code class="docutils literal notranslate"><span class="pre">master</span></code> by the CI and
+they pass. The state of the repository and its continuous integration system
+can be described like this:</p>
+<div class="figure align-default">
+<img alt="Base branch adds a new commit" src="_images/new-master-pr-ci-pass.png" />
+</div>
+<p>The pull request is still marked as valid by the continuous integration system
+since it did not change. As there is no code conflicts, the pull request is
+considered as <cite>mergeable</cite> by GitHub: the merge button is green.</p>
+<p>If you click that merge button, this is what <cite>might</cite> happens:</p>
+<div class="figure align-default">
+<img alt="Base branch is broken" src="_images/merge-ci-fail.png" />
+</div>
+<p>As a new merge commit is created to merge the pull request, it is possible that
+the continuous integration testing will fail. Indeed, you never tested the pull
+request with the <cite>new commit</cite> that has been added to the base branch. Some new
+test might have been introduced by this <cite>new commit</cite> in the base branch while
+the pull request was open. That pull request may not have the correct code to
+pass this new test.</p>
+<p>Now you realize that by pressing the merge button, you just broke your
+continuous integration system, and probably your software. Good job! 🤕</p>
+</div>
+<div class="section" id="the-strict-merge-solution">
+<h3>The Strict Merge Solution<a class="headerlink" href="#the-strict-merge-solution" title="Permalink to this headline">¶</a></h3>
+<p>The <cite>strict merge</cite> option solves that issue by updating any pull request that
+is not up-to-date with its base branch before being merged. That forces the
+continuous integration system to test again the pull request with the new code.</p>
+<p>In the previous example, if the <code class="docutils literal notranslate"><span class="pre">strict</span></code> option was enabled, Mergify would
+have merged <code class="docutils literal notranslate"><span class="pre">master</span></code> in the base branch automatically. The continuous
+integration system would have run again and marked the pull request as failing
+the test, removing it from the mergeable candidate.</p>
+<div class="figure align-default">
+<img alt="Rebase make CI fails" src="_images/merge-ci-fail.png" />
+</div>
+<p>When the <code class="docutils literal notranslate"><span class="pre">strict</span></code> option is enabled, Mergify takes care of merging the target
+branch in any pull request that is not up-to-date with its target branch. If
+multiple pull requests are mergeable, they are scheduled to be merged
+sequentially, and they will be updated on top of each other.</p>
+<p>The pull request branch update is only done when the pull request is ready to
+be merged by the engine, e.g., when all the <cite>conditions</cite> are validated.</p>
+</div>
+<div class="section" id="enabling-the-strict-option">
+<h3>Enabling the Strict Option<a class="headerlink" href="#enabling-the-strict-option" title="Permalink to this headline">¶</a></h3>
+<p>To enable <cite>strict merge</cite>, you need to set the value of <code class="docutils literal notranslate"><span class="pre">strict</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>
+in the <a class="reference internal" href="actions.html#merge-action"><span class="std std-ref">merge</span></a> action. For example:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge with strict</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;#approved-reviews-by&gt;=2&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=continuous-integration/travis-ci/pr</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">merge</span><span class="p">:</span>
+        <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
+        <span class="nt">strict</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="git-merge-workflow-and-mergify-equivalent-configuration">
+<h2>Git merge workflow and Mergify equivalent configuration<a class="headerlink" href="#git-merge-workflow-and-mergify-equivalent-configuration" title="Permalink to this headline">¶</a></h2>
+<p>There is a lot of different ways to merge pull requests. You can replicate many
+<code class="docutils literal notranslate"><span class="pre">git</span></code> based merge when using Mergify — here’s a list of equivalence.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><cite>base branch</cite> is usually <code class="docutils literal notranslate"><span class="pre">master</span></code> or <code class="docutils literal notranslate"><span class="pre">dev</span></code>,
+<cite>head branch</cite> is the pull request branch.</p>
+</div>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Git merge workflow</p></th>
+<th class="head"><p>Mergify configuration</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(on head branch) $ git merge --no-ff base
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merge</span><span class="p">:</span>
+  <span class="n">method</span><span class="p">:</span> <span class="n">merge</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(on head branch) $ git merge --no-ff base
+(on head branch) # Wait for CI to go green
+(on base branch) $ git merge --no-ff head
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merge</span><span class="p">:</span>
+  <span class="n">strict</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">method</span><span class="p">:</span> <span class="n">merge</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(on head branch) $ git rebase base
+(on base branch) $ git merge --ff head
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merge</span><span class="p">:</span>
+  <span class="n">method</span><span class="p">:</span> <span class="n">rehead</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(on head branch) $ git merge --no-ff base
+(on head branch) # Wait for CI to go green
+(on head branch) $ git rebase base
+(on base branch) $ git merge --ff head
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merge</span><span class="p">:</span>
+  <span class="n">strict</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">method</span><span class="p">:</span> <span class="n">rebase</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(on head branch) $ git rebase base
+(on head branch) # Wait for CI to go green
+(on base branch) $ git merge --no-ff head
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merge</span><span class="p">:</span>
+  <span class="n">strict</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">strict_method</span><span class="p">:</span> <span class="n">rebase</span>
+  <span class="n">method</span><span class="p">:</span> <span class="n">merge</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(on head branch) # Squash all commits
+(on base branch) $ git merge --ff head
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merge</span><span class="p">:</span>
+  <span class="n">method</span><span class="p">:</span> <span class="n">squash</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(on head branch) $ git merge --no-ff base
+(on head branch) # Wait for CI to go green
+(on head branch) # Squash all commits
+(on base branch) $ git merge --ff head
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merge</span><span class="p">:</span>
+  <span class="n">strict</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">method</span><span class="p">:</span> <span class="n">squash</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(on head branch) $ git rebase base
+(on head branch) # Wait for CI to go green
+(on head branch) # Squash all commits
+(on base branch) $ git merge --ff head
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merge</span><span class="p">:</span>
+  <span class="n">strict</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">strict_method</span><span class="p">:</span> <span class="n">rebase</span>
+  <span class="n">method</span><span class="p">:</span> <span class="n">squash</span>
+</pre></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span>(on head branch) $ git rebase base
+(on head branch) # Squash all commits
+(on head branch) # Mergify wait for CI
+(on head branch) $ git merge --no-ff head
+</pre></div>
+</div>
+</td>
+<td><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">merge</span><span class="p">:</span>
+  <span class="n">strict</span><span class="p">:</span> <span class="n">true</span>
+  <span class="n">strict_method</span><span class="p">:</span> <span class="n">squash</span>
+  <span class="n">method</span><span class="p">:</span> <span class="n">merge</span>
+</pre></div>
+</div>
+<p><cite>(not yet implemented)</cite></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="clearer"></div>
+    </div>
+  </div>
+</div>
+<footer class="footer d-flex justify-content-between flex-wrap">
+    <div class="copyright">
+        <div>&copy; Copyright 2020, Mergify</div>
+    </div>
+    <div>
+        <a href="#" class="btn btn-primary btn-sm" role="button">Back to top</a>
+    </div>
+</footer>
+  </body>
+</html>

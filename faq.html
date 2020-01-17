@@ -76,7 +76,7 @@
 <li class="toctree-l1"><a class="reference internal" href="conditions.html">Conditions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="strict-workflow.html">Strict Merge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merge-action.html">Delving into the Merge Action</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Example Rules</a></li>
 <li class="toctree-l1"><a class="reference internal" href="badge.html">Badge</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">FAQ</a><ul>
@@ -99,7 +99,7 @@
 <h1>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="how-do-i-fix-the-pull-request-can-t-be-updated-with-latest-base-branch-changes-owner-doesn-t-allow-modification-error">
 <h2>How do I fix the <em>“Pull request can’t be updated with latest base branch changes, owner doesn’t allow modification”</em> error?<a class="headerlink" href="#how-do-i-fix-the-pull-request-can-t-be-updated-with-latest-base-branch-changes-owner-doesn-t-allow-modification-error" title="Permalink to this headline">¶</a></h2>
-<p>When <a class="reference internal" href="strict-workflow.html"><span class="doc">Strict Merge</span></a> is enabled, pull requests must be updated with the
+<p>When <a class="reference internal" href="merge-action.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> is enabled, pull requests must be updated with the
 latest content from the target branch before being merged. To do that, Mergify
 needs the permission to update the source branch of the pull request.</p>
 <p>In certain cases, the pull request creator might not have authorized the
@@ -128,7 +128,7 @@ Checks tab. This is GitHub UI magic.</p>
 </div>
 <div class="section" id="i-see-a-rebase-and-force-push-done-by-a-member-of-the-repository-but-mergify-actually-did-it">
 <span id="faq-strict-rebase"></span><h2>I see a rebase and force-push done by a member of the repository, but Mergify actually did it.<a class="headerlink" href="#i-see-a-rebase-and-force-push-done-by-a-member-of-the-repository-but-mergify-actually-did-it" title="Permalink to this headline">¶</a></h2>
-<p>If you are using <a class="reference internal" href="strict-workflow.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> with <code class="docutils literal notranslate"><span class="pre">strict_method</span></code> set to <code class="docutils literal notranslate"><span class="pre">rebase</span></code>,
+<p>If you are using <a class="reference internal" href="merge-action.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> with <code class="docutils literal notranslate"><span class="pre">strict_method</span></code> set to <code class="docutils literal notranslate"><span class="pre">rebase</span></code>,
 Mergify will rebase your pull request to get it up-to-date with its base
 branch. The branch needs to be then force-pushed to the pull request owner
 branch.</p>
