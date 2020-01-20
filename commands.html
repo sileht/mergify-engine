@@ -100,15 +100,18 @@
             
   <div class="section" id="commands">
 <span id="id1"></span><h1>Commands<a class="headerlink" href="#commands" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference internal" href="actions.html#actions"><span class="std std-ref">Actions</span></a> can be run directly by commenting on a pull request. The syntax is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@Mergifyio [parameters …]
+<p>Mergify is able to run some <a class="reference internal" href="actions.html#actions"><span class="std std-ref">Actions</span></a> directly without leveraging the rule
+system. By commenting on a pull request, you can ask Mergify to executes some
+actions.</p>
+<p>The syntax of the comment is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>@Mergifyio &lt;command&gt; [parameters …]
 </pre></div>
 </div>
 <p>The list of available commands is listed below, with their parameters:</p>
 <div class="section" id="rebase">
 <span id="rebase-command"></span><h2>rebase<a class="headerlink" href="#rebase" title="Permalink to this headline">¶</a></h2>
 <blockquote>
-<div><p>Will run the <a class="reference internal" href="actions.html#rebase-action"><span class="std std-ref">rebase</span></a> action.</p>
+<div><p>Runs the <a class="reference internal" href="actions.html#rebase-action"><span class="std std-ref">rebase</span></a> action.</p>
 </div></blockquote>
 <table class="colwidths-given docutils align-left">
 <colgroup>
@@ -127,9 +130,7 @@
 </div>
 <div class="section" id="backport">
 <span id="backport-command"></span><h2>backport<a class="headerlink" href="#backport" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Will run the <a class="reference internal" href="actions.html#backport-action"><span class="std std-ref">backport</span></a> action.</p>
-</div></blockquote>
+<p>Runs the <a class="reference internal" href="actions.html#backport-action"><span class="std std-ref">backport</span></a> action.</p>
 <table class="colwidths-given docutils align-left">
 <colgroup>
 <col style="width: 13%" />
@@ -147,9 +148,7 @@
 </div>
 <div class="section" id="refresh">
 <h2>refresh<a class="headerlink" href="#refresh" title="Permalink to this headline">¶</a></h2>
-<blockquote>
-<div><p>Will re-evalute your Mergify rules on this pull request</p>
-</div></blockquote>
+<p>Re-evalutes your Mergify rules on this pull request.</p>
 <table class="colwidths-given docutils align-left">
 <colgroup>
 <col style="width: 13%" />
