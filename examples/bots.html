@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>Bots &#8212; Mergify  documentation</title>
+    <title>🤖 Bots &#8212; Mergify  documentation</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   
@@ -57,7 +57,7 @@
   <nav class="related d-flex justify-content-between flex-wrap" role="navigation" aria-label="related navigation">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="../index.html">Mergify  documentation</a></li>
-    <li class="breadcrumb-item active">Bots</li>
+    <li class="breadcrumb-item active">🤖 Bots</li>
   </ol>
   <div>
     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
@@ -66,7 +66,7 @@
 </nav>
   <div class="main container-fluid">
     <div class="row">
-      <div class="sphinxsidebar col-12 col-lg-3 col-xl-2" aria-label="main navigation"><ul>
+      <div class="sphinxsidebar col-12 col-lg-4 col-xl-3" aria-label="main navigation"><ul>
 <li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../configuration.html">Configuration File</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../conditions.html">Conditions</a></li>
@@ -80,21 +80,21 @@
 
 
       </div>
-      <div class="document col-12 col-lg-9 col-xl-10">
+      <div class="document col-12 col-lg-8 col-xl-9">
       <div class="documentwrapper">
         <div class="bodywrapper">
           <div class="body" role="main">
             
   <div class="section" id="bots">
-<h1>Bots<a class="headerlink" href="#bots" title="Permalink to this headline">¶</a></h1>
-<p>Some pull request might be created automatically by other tools, such as the
+<h1>🤖 Bots<a class="headerlink" href="#bots" title="Permalink to this headline">¶</a></h1>
+<p>Some pull requests might be created automatically by other tools, such as the
 ones sending automatic dependencies update. You might decide that there’s no
 need to manually review and approve those pull request as long as your
 continuous integration system validates them.</p>
-<p>The rules below are samples for such services: they are designed to
-automatically merged those updates without human interview if the continuous
+<p>The rules below are examples for such services: they are designed to
+automatically merge those updates without human intervention if the continuous
 integration system validates them. <code class="docutils literal notranslate"><span class="pre">Travis</span> <span class="pre">CI</span> <span class="pre">-</span> <span class="pre">Pull</span> <span class="pre">Request</span></code> is used as the
-CI check name here, but it can be anything that you need.</p>
+CI check name here — adjust it to whatever you use.</p>
 <div class="section" id="dependabot">
 <h2>Dependabot<a class="headerlink" href="#dependabot" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://dependabot.io">Dependabot</a> sends automatic security update of your
@@ -102,7 +102,7 @@ project dependencies.</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge for Dependabot pull requests</span>
     <span class="nt">conditions</span><span class="p">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author=dependabot[bot]</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author~=^dependabot(|-preview)\[bot\]$</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=Travis CI - Pull Request</span>
     <span class="nt">actions</span><span class="p">:</span>
       <span class="nt">merge</span><span class="p">:</span>
