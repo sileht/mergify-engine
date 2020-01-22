@@ -79,8 +79,9 @@
 <li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration File</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Conditions</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#grammar">Grammar</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#attribute-list">Attribute List</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#operators-list">Operators List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#operators">Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#impementing-or-conditions">Impementing Or Conditions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#status-check-name">Status Check Name</a></li>
 </ul>
 </li>
@@ -145,8 +146,8 @@ is the length operator in Mergify’s conditions system, don’t forget to use
 <code class="docutils literal notranslate"><span class="pre">Boolean</span></code>.</p>
 </div>
 </div>
-<div class="section" id="attribute-list">
-<h2>Attribute List<a class="headerlink" href="#attribute-list" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="attributes">
+<h2>Attributes<a class="headerlink" href="#attributes" title="Permalink to this headline">¶</a></h2>
 <p>Here’s the list of pull request attribute that can be used in conditions:</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -293,9 +294,15 @@ details.</p></td>
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When the attributes type is an array, the <a class="reference internal" href="#operators"><span class="std std-ref">Operators</span></a> have a different
+behaviour and check against every value of the array. There is no need to
+use a different syntax.</p>
 </div>
-<div class="section" id="operators-list">
-<h2>Operators List<a class="headerlink" href="#operators-list" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="operators">
+<span id="id2"></span><h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 33%" />
@@ -312,18 +319,20 @@ details.</p></td>
 <tr class="row-even"><td><p>Equal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">=</span></code> or <code class="docutils literal notranslate"><span class="pre">:</span></code></p></td>
 <td><p>This operator checks for strict equality. If the target attribute type
-is an array, each element of the array is compared against the value.</p></td>
+is an array, each element of the array is compared against the value and
+the condition is true if any value matches.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Not Equal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code> or <code class="docutils literal notranslate"><span class="pre">≠</span></code></p></td>
 <td><p>This operator checks for non equality. If the target attribute type
-is an array, each element of the array is compared against the value.</p></td>
+is an array, each element of the array is compared against the value and
+the condition is true if no value matches.</p></td>
 </tr>
 <tr class="row-even"><td><p>Match</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">~=</span></code></p></td>
 <td><p>This operator checks for regular expression matching. If the target
 attribute type is an array, each element of the array is matched
-against the value.</p></td>
+against the value and the condition is true if any value matches.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Greater Than or Equal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> or <code class="docutils literal notranslate"><span class="pre">≥</span></code></p></td>
@@ -351,6 +360,33 @@ the <code class="docutils literal notranslate"><span class="pre">#</span></code>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="impementing-or-conditions">
+<h2>Impementing Or Conditions<a class="headerlink" href="#impementing-or-conditions" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>conditions</cite> do not support the <cite>or</cite> operation. As Mergify evaluates and
+apply every matching rules from your configuration, you can implement multiple
+rules in order to have this.</p>
+<p>For example, to automatically merge a pull request if its author is <code class="docutils literal notranslate"><span class="pre">foo</span></code> or
+<code class="docutils literal notranslate"><span class="pre">bar</span></code>, you could write:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge if author is foo</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author=foo</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=Travis CI - Pull Request</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">merge</span><span class="p">:</span>
+        <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
+
+<span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge if author is bar</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author=foo</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=Travis CI - Pull Request</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">merge</span><span class="p">:</span>
+        <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="status-check-name">
 <h2>Status Check Name<a class="headerlink" href="#status-check-name" title="Permalink to this headline">¶</a></h2>
