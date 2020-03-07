@@ -187,6 +187,12 @@ to.</p></td>
 <td><p>Whether to create the pull requests even if they are conflicts when
 cherry-picking the commits.</p></td>
 </tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">label_conflicts</span></code></p></td>
+<td><p>string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">conflicts</span></code></p></td>
+<td><p>The label to add to the created pull requested if it has conflicts and
+<code class="docutils literal notranslate"><span class="pre">ignore_conflicts</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
+</tr>
 </tbody>
 </table>
 <p>Once the backporting pull request is closed or merged, Mergify will
@@ -225,6 +231,12 @@ automatically delete the backport head branch that it created.</p>
 <td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
 <td><p>Whether to create the pull requests even if they are conflicts when
 cherry-picking the commits.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">label_conflicts</span></code></p></td>
+<td><p>string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">conflicts</span></code></p></td>
+<td><p>The label to add to the created pull requested if it has conflicts and
+<code class="docutils literal notranslate"><span class="pre">ignore_conflicts</span></code> is set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></td>
 </tr>
 </tbody>
 </table>
