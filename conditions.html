@@ -81,6 +81,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#grammar">Grammar</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#attributes">Attributes</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#operators">Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-match-lists">How To Match Lists</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#impementing-or-conditions">Impementing Or Conditions</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#status-check-name">Status Check Name</a></li>
 </ul>
@@ -163,13 +164,13 @@ is the length operator in Mergify’s conditions system, don’t forget to use
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">assignee</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of GitHub user or team login that are assigned to the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
 repository organization.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">approved-reviews-by</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of GitHub user or team login that approved the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
 repository organization.
@@ -191,7 +192,7 @@ repository organization.</p></td>
 <td><p>The contents of the pull request.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">changes-requested-reviews-by</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of GitHub user or team login that have requested changes in a
 review for the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
@@ -208,7 +209,7 @@ on the repository.</p></td>
 <td><p>Whether the pull request is conflicting with its base branch.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">commented-reviews-by</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of GitHub user or team login that have commented in a review
 for the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
@@ -217,7 +218,7 @@ This only matches reviewers with <code class="docutils literal notranslate"><spa
 on the repository.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">dismissed-reviews-by</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of GitHub user or team login that have their review dismissed
 in the pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
@@ -234,7 +235,7 @@ on the repository.</p></td>
 <td><p>The name of the branch where the pull request changes are implemented.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">label</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of labels of the pull request.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">locked</span></code></p></td>
@@ -256,7 +257,7 @@ repository organization.</p></td>
 <td><p>The milestone title associated to the pull request.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">review-requested</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of GitHub user or team login that were requested to review the
 pull request.
 Team logins are prefixed with the <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> character and must belong to the
@@ -265,7 +266,7 @@ This only matches reviewers with <code class="docutils literal notranslate"><spa
 on the repository.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status-success</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of status checks that successfuly passed for the pull request.
 This is the name of a <em>status check</em> such as
 <cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
@@ -273,7 +274,7 @@ This is the name of a <em>status check</em> such as
 details.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status-neutral</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of status checks that are neutral for the pull request.
 This is the name of a <em>status check</em> such as
 <cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
@@ -281,7 +282,7 @@ This is the name of a <em>status check</em> such as
 details.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status-failure</span></code></p></td>
-<td><p>array of string</p></td>
+<td><p>list of string</p></td>
 <td><p>The list of status checks that failed for the pull request.
 This is the name of a <em>status check</em> such as
 <cite>continuous-integration/travis-ci/pr</cite> or of a <em>check run</em> such as
@@ -294,12 +295,6 @@ details.</p></td>
 </tr>
 </tbody>
 </table>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>When the attributes type is an array, the <a class="reference internal" href="#operators"><span class="std std-ref">Operators</span></a> have a different
-behaviour and check against every value of the array. There is no need to
-use a different syntax.</p>
-</div>
 </div>
 <div class="section" id="operators">
 <span id="id2"></span><h2>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h2>
@@ -319,47 +314,80 @@ use a different syntax.</p>
 <tr class="row-even"><td><p>Equal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">=</span></code> or <code class="docutils literal notranslate"><span class="pre">:</span></code></p></td>
 <td><p>This operator checks for strict equality. If the target attribute type
-is an array, each element of the array is compared against the value and
+is a list, each element of the list is compared against the value and
 the condition is true if any value matches.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Not Equal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">!=</span></code> or <code class="docutils literal notranslate"><span class="pre">≠</span></code></p></td>
 <td><p>This operator checks for non equality. If the target attribute type
-is an array, each element of the array is compared against the value and
+is a list, each element of the list is compared against the value and
 the condition is true if no value matches.</p></td>
 </tr>
 <tr class="row-even"><td><p>Match</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">~=</span></code></p></td>
 <td><p>This operator checks for regular expression matching. If the target
-attribute type is an array, each element of the array is matched
+attribute type is a list, each element of the list is matched
 against the value and the condition is true if any value matches.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Greater Than or Equal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> or <code class="docutils literal notranslate"><span class="pre">≥</span></code></p></td>
 <td><p>This operator checks for the value to be greater than or equal to the
-provided value. It’s usually used to compare against the length of an
-array using the <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix.</p></td>
+provided value. It’s usually used to compare against the length of a
+list using the <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix.</p></td>
 </tr>
 <tr class="row-even"><td><p>Greater Than</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&gt;</span></code></p></td>
 <td><p>This operator checks for the value to be greater than the provided
-value. It’s usually used to compare against the length of an array using
+value. It’s usually used to compare against the length of a list using
 the <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix.</p></td>
 </tr>
 <tr class="row-odd"><td><p>Lesser Than or Equal</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> or <code class="docutils literal notranslate"><span class="pre">≤</span></code></p></td>
 <td><p>This operator checks for the value to be lesser then or equal to the
-provided value. It’s usually used to compare against the length of an
-array using the <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix.</p></td>
+provided value. It’s usually used to compare against the length of a
+list using the <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix.</p></td>
 </tr>
 <tr class="row-even"><td><p>Lesser Than</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">&lt;</span></code></p></td>
-<td><p>This operator checks for the value to be lesser than the provided
-value. It’s usually used to compare against the length of an array using
-the <code class="docutils literal notranslate"><span class="pre">#</span></code> prefix.</p></td>
+<td><p>This operator checks for the value to be lesser than the provided value.
+It’s usually used to compare against the length of a list using the
+<code class="docutils literal notranslate"><span class="pre">#</span></code> prefix.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="how-to-match-lists">
+<h2>How To Match Lists<a class="headerlink" href="#how-to-match-lists" title="Permalink to this headline">¶</a></h2>
+<p>Some attributes have a type of <code class="docutils literal notranslate"><span class="pre">list</span></code>. Most <a class="reference internal" href="#operators">Operators</a> are able to match
+value against lists: they will iterate over all the values of the list and
+return true if any of the value matches.</p>
+<p>For example, the <code class="docutils literal notranslate"><span class="pre">label</span></code> attribute is a list of string containing the names
+of the label attached to a pull request. With a pull request whose labels are
+<code class="docutils literal notranslate"><span class="pre">(bug,</span> <span class="pre">work-in-progress)</span></code>, then:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">label=work-in-progress</span></code> is <strong>true</strong> because there is a label named
+<code class="docutils literal notranslate"><span class="pre">work-in-progress</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label=enhancement</span></code> is <strong>false</strong> because there is no label named
+<code class="docutils literal notranslate"><span class="pre">enhancement</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label!=work-in-progress</span></code> is <strong>false</strong> because there is a label named
+<code class="docutils literal notranslate"><span class="pre">work-in-progress</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">label~=^work</span></code> is <strong>true</strong> because there is a label matching the regular
+expression <code class="docutils literal notranslate"><span class="pre">^work</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-label~=^work</span></code> is <strong>false</strong> because there is a label matching the regular
+expression <code class="docutils literal notranslate"><span class="pre">^work</span></code> but the condition is reversed with the <code class="docutils literal notranslate"><span class="pre">-</span></code> prefix.</p></li>
+</ul>
+<p>The same applies for the <code class="docutils literal notranslate"><span class="pre">files</span></code> attribute — which contains the list of
+modified files:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">files=README</span></code> is <strong>true</strong> if the file <code class="docutils literal notranslate"><span class="pre">README</span></code> is modified in the pull
+request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files!=README</span></code> is <strong>true</strong> if the file <code class="docutils literal notranslate"><span class="pre">README</span></code> is not modified in the
+pull request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">files~=^src/</span></code> is <strong>true</strong> if any files in the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory is
+modified in the pull request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-files~=^src/</span></code> is <strong>true</strong> if none of the files that are modified are in
+the <code class="docutils literal notranslate"><span class="pre">src</span></code> directory.</p></li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can use <a class="reference external" href="http://www.pyregex.com">PyRegex</a> or <a class="reference external" href="https://pythex.org/">Pythex</a> to test your regular expression.</p>

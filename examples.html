@@ -203,14 +203,27 @@ touch. You can use the <code class="docutils literal notranslate"><span class="p
 <code class="docutils literal notranslate"><span class="pre">#files</span></code> to access the number of files.</p>
 <p>This tweak is useful when you want Mergify to merge only data files which can be
 validated by the script, linter, etc.</p>
-<p>The below sample merges only if <code class="docutils literal notranslate"><span class="pre">data.json</span></code> changed and if the pul requests
+<p>The below sample merges only if <code class="docutils literal notranslate"><span class="pre">data.json</span></code> changed and if the pull request
 passes Circle CI’s validation tests:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge on CircleCI success if only data.json is changed</span>
     <span class="nt">conditions</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="s">&quot;status-success=ci/circleci:</span><span class="nv"> </span><span class="s">validate&quot;</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">files=data1.json</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">files=data.json</span>
       <span class="p p-Indicator">-</span> <span class="s">&quot;#files=1&quot;</span>
+    <span class="nt">actions</span><span class="p">:</span>
+      <span class="nt">merge</span><span class="p">:</span>
+        <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
+</pre></div>
+</div>
+<p>You can also match patterns using regular expression. The following rule merges
+the pull requests when the CI passes and when all the files are inside the
+<code class="docutils literal notranslate"><span class="pre">src/</span></code> directory:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
+  <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge on CircleCI success if only data.json is changed</span>
+    <span class="nt">conditions</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&quot;status-success=ci/circleci:</span><span class="nv"> </span><span class="s">validate&quot;</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-files~=^(!?src/)</span>
     <span class="nt">actions</span><span class="p">:</span>
       <span class="nt">merge</span><span class="p">:</span>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
