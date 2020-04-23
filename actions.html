@@ -537,16 +537,36 @@ protection to be validated before merging the pull request.</p>
 <div class="section" id="defining-the-commit-message">
 <span id="commit-message"></span><h3>Defining the Commit Message<a class="headerlink" href="#defining-the-commit-message" title="Permalink to this headline">¶</a></h3>
 <p>When a pull request is merged using the <code class="docutils literal notranslate"><span class="pre">squash</span></code> or <code class="docutils literal notranslate"><span class="pre">merge</span></code> method, you can
-override the commit message by adding a section in the pull request body. The
-section must start with the Markdown title “Commit Message” and contain the
-actual commit message:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">## Commit Message</span>
-<span class="n">My</span> <span class="n">wanted</span> <span class="n">commit</span> <span class="n">title</span>
+override the default commit message. To that end, you need to add a section in
+the pull request body that starts with <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">Message</span></code>.</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gu">##</span> Commit Message
 
-<span class="n">The</span> <span class="n">whole</span> <span class="n">commit</span> <span class="n">message</span> <span class="n">finishes</span> <span class="n">at</span> <span class="n">the</span> <span class="n">end</span> <span class="n">of</span> <span class="n">the</span> <span class="n">pull</span> <span class="n">request</span> <span class="n">body</span> <span class="ow">or</span>
-<span class="n">before</span> <span class="n">a</span> <span class="n">new</span> <span class="n">Markdown</span> <span class="n">title</span><span class="o">.</span>
+My wanted commit title
+
+The whole commit message finishes at the end of the pull request body or
+before a new Markdown title.
 </pre></div>
 </div>
+<p>The whole commit message finishes at the end of the pull request body or before
+a new Markdown title.</p>
+<p>You can use any available attributes of the pull request in the commit message,
+by writing a template using the <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
+<p>For example:</p>
+<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gu">##</span> Commit Message
+
+{{title}}
+
+This pull request implements magnificient features, and I would like to
+talk about them. This has been written by {{author}} and has been reviewed
+by:
+
+{% for user in approved_reviews_by %}
+<span class="k">-</span> {{user}}
+{% endfor %}
+</pre></div>
+</div>
+<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
+<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This feature only works when <code class="docutils literal notranslate"><span class="pre">commit_message</span></code> is set to <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>
