@@ -276,6 +276,14 @@ available for <a class="reference external" href="https://mergify.io/pricing">Pr
 </tr>
 </tbody>
 </table>
+<p>You can use any available attributes of the pull request in the comment
+message, by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
+<p>For example:</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you </span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> for your contribution!</span>
+</pre></div>
+</div>
+<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
+<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
 </div>
 <div class="section" id="review">
 <span id="review-action"></span><h2>review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
@@ -560,19 +568,19 @@ before a new Markdown title.
 <p>The whole commit message finishes at the end of the pull request body or before
 a new Markdown title.</p>
 <p>You can use any available attributes of the pull request in the commit message,
-by writing a template using the <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
+by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
 <p>For example:</p>
-<div class="highlight-md notranslate"><div class="highlight"><pre><span></span><span class="gu">##</span> Commit Message
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">## Commit Message</span>
 
-{{title}}
+<span class="cp">{{</span><span class="nv">title</span><span class="cp">}}</span><span class="x"></span>
 
-This pull request implements magnificient features, and I would like to
-talk about them. This has been written by {{author}} and has been reviewed
-by:
+<span class="x">This pull request implements magnificient features, and I would like to</span>
+<span class="x">talk about them. This has been written by </span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> and has been reviewed</span>
+<span class="x">by:</span>
 
-{% for user in approved_reviews_by %}
-<span class="k">-</span> {{user}}
-{% endfor %}
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">user</span> <span class="k">in</span> <span class="nv">approved_reviews_by</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">- </span><span class="cp">{{</span><span class="nv">user</span><span class="cp">}}</span><span class="x"></span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 <p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
