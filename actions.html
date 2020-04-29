@@ -315,6 +315,14 @@ message, by writing a template using <a class="reference external" href="https:/
 </tr>
 </tbody>
 </table>
+<p>You can use any available attributes of the pull request in the review message,
+by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
+<p>For example:</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you </span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> for your contribution!</span>
+</pre></div>
+</div>
+<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
+<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
 </div>
 <div class="section" id="close">
 <span id="close-action"></span><h2>close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h2>
@@ -341,6 +349,14 @@ message, by writing a template using <a class="reference external" href="https:/
 </tr>
 </tbody>
 </table>
+<p>You can use any available attributes of the pull request in the close message,
+by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
+<p>For example:</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you </span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> for your contribution!</span>
+</pre></div>
+</div>
+<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
+<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
 </div>
 <div class="section" id="delete-head-branch">
 <span id="delete-head-branch-action"></span><h2>delete_head_branch<a class="headerlink" href="#delete-head-branch" title="Permalink to this headline">¶</a></h2>
@@ -420,6 +436,14 @@ whose review will be removed.</p></td>
 </tr>
 </tbody>
 </table>
+<p>You can use any available attributes of the pull request in the comment
+message, by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
+<p>For example:</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you </span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> for your contribution!</span>
+</pre></div>
+</div>
+<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
+<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
 </div>
 <div class="section" id="label">
 <span id="label-action"></span><h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
