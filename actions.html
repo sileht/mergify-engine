@@ -542,10 +542,12 @@ when <a class="reference internal" href="merge-action.html#strict-merge"><span c
 <li><p><code class="docutils literal notranslate"><span class="pre">merge</span></code> to merge the base branch into the pull request.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rebase</span></code> to rebase the pull request against its base branch.</p></li>
 </ul>
-<p>Note that <code class="docutils literal notranslate"><span class="pre">rebase</span></code> has many drawbacks due to the change of all commits
-sha of the pull request. For example:</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> method has many drawbacks:</p>
 <ul class="simple">
-<li><p>Your contributor will need to “force push” its own branch if it adds new commits.</p></li>
+<li><p>It doesn’t work for private forked repositories.</p></li>
+<li><p>Due to the change of all commits SHA-1 of the pull request, your
+contributor will need to force-push its own branch if they add new
+commits.</p></li>
 <li><p>GitHub branch protection of your repository may dismiss approved reviews.</p></li>
 <li><p>GitHub branch protection of the contributor repository may refuse Mergify to
 force push the rebased pull request.</p></li>
