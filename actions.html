@@ -270,20 +270,12 @@ available for <a class="reference external" href="https://mergify.io/pricing">Pr
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
-<td><p>string</p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td></td>
 <td><p>The message to write as a comment.</p></td>
 </tr>
 </tbody>
 </table>
-<p>You can use any available attributes of the pull request in the comment
-message, by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
-<p>For example:</p>
-<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you </span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> for your contribution!</span>
-</pre></div>
-</div>
-<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
-<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
 </div>
 <div class="section" id="review">
 <span id="review-action"></span><h2>review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
@@ -309,20 +301,12 @@ message, by writing a template using <a class="reference external" href="https:/
 <td><p>The kind of review, can be <code class="docutils literal notranslate"><span class="pre">APPROVE</span></code>, <code class="docutils literal notranslate"><span class="pre">REQUEST_CHANGES</span></code>, <code class="docutils literal notranslate"><span class="pre">COMMENT</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
-<td><p>string</p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td></td>
 <td><p>The message to write as a comment.</p></td>
 </tr>
 </tbody>
 </table>
-<p>You can use any available attributes of the pull request in the review message,
-by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
-<p>For example:</p>
-<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you </span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> for your contribution!</span>
-</pre></div>
-</div>
-<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
-<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
 </div>
 <div class="section" id="close">
 <span id="close-action"></span><h2>close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h2>
@@ -343,20 +327,12 @@ by writing a template using <a class="reference external" href="https://jinja.pa
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
-<td><p>string</p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">automatically</span> <span class="pre">closed</span> <span class="pre">by</span> <span class="pre">Mergify.</span></code></p></td>
 <td><p>The message to write as a comment after closing the pull request.</p></td>
 </tr>
 </tbody>
 </table>
-<p>You can use any available attributes of the pull request in the close message,
-by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
-<p>For example:</p>
-<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you </span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> for your contribution!</span>
-</pre></div>
-</div>
-<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
-<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
 </div>
 <div class="section" id="delete-head-branch">
 <span id="delete-head-branch-action"></span><h2>delete_head_branch<a class="headerlink" href="#delete-head-branch" title="Permalink to this headline">¶</a></h2>
@@ -430,20 +406,12 @@ done. If set to a list, each item should be the GitHub login of a user
 whose review will be removed.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
-<td><p>string</p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">request</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">modified.</span></code></p></td>
 <td><p>The message to post when dismissing the review.</p></td>
 </tr>
 </tbody>
 </table>
-<p>You can use any available attributes of the pull request in the comment
-message, by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
-<p>For example:</p>
-<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you </span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> for your contribution!</span>
-</pre></div>
-</div>
-<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
-<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
 </div>
 <div class="section" id="label">
 <span id="label-action"></span><h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
@@ -594,7 +562,7 @@ before a new Markdown title.
 <p>The whole commit message finishes at the end of the pull request body or before
 a new Markdown title.</p>
 <p>You can use any available attributes of the pull request in the commit message,
-by writing a template using <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2</a> markup.</p>
+by writing using the <a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">templating</span></a> language:</p>
 <p>For example:</p>
 <div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">## Commit Message</span>
 
@@ -609,8 +577,7 @@ by writing a template using <a class="reference external" href="https://jinja.pa
 <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
-<p>You can use any of the pull request <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">Attributes</span></a> as variable — replacing
-<code class="docutils literal notranslate"><span class="pre">-</span></code> with <code class="docutils literal notranslate"><span class="pre">_</span></code> in variables names.</p>
+<p>Check the <a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a> for more details on the format.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This feature only works when <code class="docutils literal notranslate"><span class="pre">commit_message</span></code> is set to <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>

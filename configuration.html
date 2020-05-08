@@ -79,6 +79,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration File</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#file-used">File Used</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#format">Format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-types">Data Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a></li>
 </ul>
 </li>
@@ -154,6 +155,33 @@ matching pull requests.</p></td>
 <p>The rules are evaluated in the order they are defined in <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>
 and, therefore, the actions are executed in that same order.</p>
 <p>See <a class="reference internal" href="examples.html#examples"><span class="std std-ref">Example Rules</span></a> for configuration file examples.</p>
+</div>
+<div class="section" id="data-types">
+<h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="template">
+<span id="data-type-template"></span><h3>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h3>
+<p>The template data type is a regular string that is rendered using the <a class="reference external" href="https://jinja.palletsprojects.com/templates/">Jinja2
+template language</a>.</p>
+<p>If you don’t need any of the power coming with this templating language, you
+can just use this as a regular string.</p>
+<p>However, those templates allow to use any of the <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">pull request attribute</span></a> in the final string.</p>
+<p>For example the template string:</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you @</span><span class="cp">{{</span><span class="nv">author</span><span class="cp">}}</span><span class="x"> for your contribution!</span>
+</pre></div>
+</div>
+<p>will render to:</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">Thank you @jd for your contribution!</span>
+</pre></div>
+</div>
+<p>when used in your configuration file — considering the pull request author
+login is <code class="docutils literal notranslate"><span class="pre">jd</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You need to replace the <code class="docutils literal notranslate"><span class="pre">-</span></code> character by <code class="docutils literal notranslate"><span class="pre">_</span></code> from the <a class="reference internal" href="conditions.html#attributes"><span class="std std-ref">pull request
+attribute</span></a> names when using templates. The <code class="docutils literal notranslate"><span class="pre">-</span></code> is not a valid
+character for variable names in Jinja2 template.</p>
+</div>
+</div>
 </div>
 <div class="section" id="validation">
 <h2>Validation<a class="headerlink" href="#validation" title="Permalink to this headline">¶</a></h2>
