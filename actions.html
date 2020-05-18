@@ -512,19 +512,7 @@ when <a class="reference internal" href="merge-action.html#strict-merge"><span c
 <li><p><code class="docutils literal notranslate"><span class="pre">merge</span></code> to merge the base branch into the pull request.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rebase</span></code> to rebase the pull request against its base branch.</p></li>
 </ul>
-<p>Note that the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> method has many drawbacks:</p>
-<ul class="simple">
-<li><p>It doesn’t work for private forked repositories.</p></li>
-<li><p>Due to the change of all commits SHA-1 of the pull request, your
-contributor will need to force-push its own branch if they add new
-commits.</p></li>
-<li><p>GitHub branch protection of your repository may dismiss approved reviews.</p></li>
-<li><p>GitHub branch protection of the contributor repository may refuse Mergify to
-force push the rebased pull request.</p></li>
-<li><p>GPG signed commits will lost their signatures.</p></li>
-<li><p>Mergify will use a token from one of the repository member to
-force-push the branch (see: <a class="reference internal" href="faq.html#faq-strict-rebase"><span class="std std-ref">I see a rebase and force-push done by a member of the repository, but Mergify actually did it.</span></a>).</p></li>
-</ul>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> method has many drawbacks, see <a class="reference internal" href="#strict-rebase"><span class="std std-ref">Strict Rebase</span></a>.</p>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">commit_message</span></code></p></td>
@@ -584,6 +572,27 @@ by writing using the <a class="reference internal" href="configuration.html#data
 <p class="admonition-title">Note</p>
 <p>This feature only works when <code class="docutils literal notranslate"><span class="pre">commit_message</span></code> is set to <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>
 </div>
+</div>
+<div class="section" id="strict-rebase">
+<span id="id3"></span><h3>Strict Rebase<a class="headerlink" href="#strict-rebase" title="Permalink to this headline">¶</a></h3>
+<p>Using the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> method for the strict merge has many drawbacks:</p>
+<ul class="simple">
+<li><p>It doesn’t work for private forked repositories.</p></li>
+<li><p>Due to the change of all commits SHA-1 of the pull request, your
+contributor will need to force-push its own branch if they add new
+commits.</p></li>
+<li><p>GitHub branch protection of your repository may dismiss approved reviews.</p></li>
+<li><p>GitHub branch protection of the contributor repository may refuse Mergify to
+force push the rebased pull request.</p></li>
+<li><p>GPG signed commits will lost their signatures.</p></li>
+<li><p>Mergify will use a token from one of the repository member to force-push the
+branch. GitHub Applications are not allowed to do that so. This is a GitHub
+limitation that we already have reported — there is not much Mergify can do
+about that. In order to make this works, Mergify randomly picks and borrows a
+token from one of your repository member and uses it to force-push the
+rebased branch. The GitHub UI will show your collaborator as the author of
+the push, while it actually has been executed by Mergify.</p></li>
+</ul>
 </div>
 </div>
 <div class="section" id="request-reviews">
