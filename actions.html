@@ -509,7 +509,7 @@ merged; the remaining pull request will be updated once again.</p></li>
 against its base branch at a time.
 This allows you to e.g., save CI time, as Mergify will queue the
 mergeable pull requests and update them serially, one at a time.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">smart+fastpath</span></code> enables <a class="reference internal" href="merge-action.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> with the same behavior as <code class="docutils literal notranslate"><span class="pre">smart</span></code>,
+<li><p><code class="docutils literal notranslate"><span class="pre">smart+fasttrack</span></code> enables <a class="reference internal" href="merge-action.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> with the same behavior as <code class="docutils literal notranslate"><span class="pre">smart</span></code>,
 except if the pull request is already in sync with its base branch,
 the queue is bypassed and the pull request is directly merged.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">false</span></code> disables <a class="reference internal" href="merge-action.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> and merge pull requests as soon
