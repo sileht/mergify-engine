@@ -159,6 +159,7 @@ e.g. <code class="docutils literal notranslate"><span class="pre">{{author}}</sp
 </div>
 <div class="section" id="backport">
 <span id="backport-action"></span><h2>backport<a class="headerlink" href="#backport" title="Permalink to this headline">¶</a></h2>
+<p><div style="text-align: right"><span class="badge badge-secondary">Not available with Enterprise Plan 🏢</span></div></p>
 <p>It is common for software to have (some of) their major versions maintained
 over an extended period. Developers usually create stable branches that are
 maintained for a while by cherry-picking patches from the development branch.</p>
@@ -222,6 +223,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Pr
 </div>
 <div class="section" id="copy">
 <h2>copy<a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h2>
+<p><div style="text-align: right"><span class="badge badge-secondary">Not available with Enterprise Plan 🏢</span></div></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">copy</span></code> action creates a copy of the pull request targetting other branches.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -607,6 +609,7 @@ by writing using the <a class="reference internal" href="configuration.html#data
 <p>Using the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> method for the strict merge has many drawbacks:</p>
 <ul class="simple">
 <li><p>It doesn’t work for private forked repositories.</p></li>
+<li><p>It doesn’t work if Mergify is used as a GitHub Action.</p></li>
 <li><p>Due to the change of all commits SHA-1 of the pull request, your
 contributor will need to force-push its own branch if they add new
 commits.</p></li>
