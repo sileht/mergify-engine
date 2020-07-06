@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <title>Configuration File &#8212; Mergify  documentation</title>
+    <title>🔖 Configuration File &#8212; Mergify  documentation</title>
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   
@@ -38,8 +38,8 @@
     <link rel="shortcut icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Conditions" href="conditions.html" />
-    <link rel="prev" title="Getting Started" href="getting-started.html" /> 
+    <link rel="next" title="🎯 Conditions" href="conditions.html" />
+    <link rel="prev" title="➡️ Getting Started" href="getting-started.html" /> 
   </head><body>
 <div class="body-container">
   <nav class="navbar navbar-expand-md sticky-top navbar-light bg-white flex-wrap">
@@ -73,15 +73,15 @@
   <nav class="related d-flex justify-content-between flex-wrap" role="navigation" aria-label="related navigation">
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="index.html">Mergify  documentation</a></li>
-    <li class="breadcrumb-item active">Configuration File</li>
+    <li class="breadcrumb-item active">🔖 Configuration File</li>
   </ol>
   <div>
     <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-      <a href="getting-started.html" title="Previous Chapter: Getting Started" class="btn btn-primary" role="button" accesskey="P">
-        &laquo; Getting Started
+      <a href="getting-started.html" title="Previous Chapter: ➡️ Getting Started" class="btn btn-primary" role="button" accesskey="P">
+        &laquo; ➡️ Getting Started
       </a>
-      <a href="conditions.html" title="Next Chapter: Conditions" class="btn btn-primary" role="button" accesskey="N">
-        Conditions &raquo;
+      <a href="conditions.html" title="Next Chapter: 🎯 Conditions" class="btn btn-primary" role="button" accesskey="N">
+        🎯 Conditions &raquo;
       </a>
     </div>
   </div>
@@ -89,21 +89,21 @@
   <div class="main container-fluid">
     <div class="row">
       <div class="sphinxsidebar col-12 col-lg-4 col-xl-3" aria-label="main navigation"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration File</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">➡️ Getting Started</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">🔖 Configuration File</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#file-used">File Used</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#format">Format</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#data-types">Data Types</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#validation">Validation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="conditions.html">Conditions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="actions.html">Actions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="commands.html">Commands</a></li>
-<li class="toctree-l1"><a class="reference internal" href="merge-action.html">Delving into the Merge Action</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Example Rules</a></li>
-<li class="toctree-l1"><a class="reference internal" href="badge.html">Badge</a></li>
-<li class="toctree-l1"><a class="reference internal" href="faq.html">FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="conditions.html">🎯 Conditions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="actions.html">🚀 Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">⚙️ Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merge-action.html">🔀 Delving into the Merge Action</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">🧪 Example Rules</a></li>
+<li class="toctree-l1"><a class="reference internal" href="badge.html">🎖 Badge</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">💬 FAQ</a></li>
 </ul>
 
 
@@ -114,7 +114,7 @@
           <div class="body" role="main">
             
   <div class="section" id="configuration-file">
-<span id="configuration-file-format"></span><h1>Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h1>
+<span id="configuration-file-format"></span><h1>🔖 Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="file-used">
 <h2>File Used<a class="headerlink" href="#file-used" title="Permalink to this headline">¶</a></h2>
 <p>Mergify uses the configuration file that is:</p>
@@ -155,28 +155,28 @@ from the root directory.</p></li>
 used when reporting information about a rule.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">conditions</span></code></p></td>
-<td><p>array of <a class="reference internal" href="conditions.html#conditions"><span class="std std-ref">Conditions</span></a></p></td>
-<td><p>A list of <a class="reference internal" href="conditions.html#conditions"><span class="std std-ref">Conditions</span></a> string that must match against the pull
+<td><p>array of <a class="reference internal" href="conditions.html#conditions"><span class="std std-ref">🎯 Conditions</span></a></p></td>
+<td><p>A list of <a class="reference internal" href="conditions.html#conditions"><span class="std std-ref">🎯 Conditions</span></a> string that must match against the pull
 request for the rule to be applied.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">actions</span></code></p></td>
-<td><p>dictionary of <a class="reference internal" href="actions.html#actions"><span class="std std-ref">Actions</span></a></p></td>
-<td><p>A dictionary made of <a class="reference internal" href="actions.html#actions"><span class="std std-ref">Actions</span></a> that will be executed on the
+<td><p>dictionary of <a class="reference internal" href="actions.html#actions"><span class="std std-ref">🚀 Actions</span></a></p></td>
+<td><p>A dictionary made of <a class="reference internal" href="actions.html#actions"><span class="std std-ref">🚀 Actions</span></a> that will be executed on the
 matching pull requests.</p></td>
 </tr>
 </tbody>
 </table>
 <p>The rules are evaluated in the order they are defined in <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>
 and, therefore, the actions are executed in that same order.</p>
-<p>See <a class="reference internal" href="examples.html#examples"><span class="std std-ref">Example Rules</span></a> for configuration file examples.</p>
+<p>See <a class="reference internal" href="examples.html#examples"><span class="std std-ref">🧪 Example Rules</span></a> for configuration file examples.</p>
 </div>
 <div class="section" id="data-types">
 <h2>Data Types<a class="headerlink" href="#data-types" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="regular-expression">
 <span id="data-type-template"></span><h3>Regular Expression<a class="headerlink" href="#regular-expression" title="Permalink to this headline">¶</a></h3>
-<p>In <a class="reference internal" href="conditions.html#conditions"><span class="std std-ref">Conditions</span></a> you can use regular expression with matching <a class="reference internal" href="conditions.html#operators"><span class="std std-ref">Operators</span></a>.</p>
+<p>In <a class="reference internal" href="conditions.html#conditions"><span class="std std-ref">🎯 Conditions</span></a> you can use regular expression with matching <a class="reference internal" href="conditions.html#operators"><span class="std std-ref">Operators</span></a>.</p>
 <p>Mergify leverages <a class="reference external" href="https://docs.python.org/3/library/re.html">Python regular expression</a> to match rules.</p>
-<p>See the specific <a class="reference internal" href="examples.html#examples"><span class="std std-ref">Example Rules</span></a> for configuration file examples.</p>
+<p>See the specific <a class="reference internal" href="examples.html#examples"><span class="std std-ref">🧪 Example Rules</span></a> for configuration file examples.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>You can use <a class="reference external" href="http://www.pyregex.com">PyRegex</a> or <a class="reference external" href="https://pythex.org/">Pythex</a> to test your regular expression.</p>
