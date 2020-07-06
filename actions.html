@@ -539,9 +539,11 @@ when <a class="reference internal" href="merge-action.html#strict-merge"><span c
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bot_account</span></code></p></td>
 <td><p>string</p></td>
 <td></td>
-<td><p>For certain actions, such as rebasing branches, Mergify has to impersonate a GitHub user.
-If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify picks randomly one of the organization users instead.
-The user <strong>must</strong> have already been logged in the dashboard once.</p></td>
+<td><p>For certain actions, such as rebasing branches, Mergify has to
+impersonate a GitHub user. You can specify the account to use with this
+option. If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify picks randomly one of the
+organization users instead. The user account <strong>must</strong> have already been
+logged in Mergify dashboard once.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">priority</span></code></p></td>
 <td><p>1 &lt;= integer &lt;= 10000 or <code class="docutils literal notranslate"><span class="pre">low</span></code> or <code class="docutils literal notranslate"><span class="pre">medium</span></code> or <code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
@@ -686,9 +688,11 @@ the push, while it actually has been executed by Mergify.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bot_account</span></code></p></td>
 <td><p>string</p></td>
 <td></td>
-<td><p>For rebasing branches, Mergify has to impersonate a GitHub user.
-If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify picks randomly one of the organization users instead.
-The user <strong>must</strong> have already been logged in the dashboard once.</p></td>
+<td><p>For certain actions, such as rebasing branches, Mergify has to
+impersonate a GitHub user. You can specify the account to use with this
+option. If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify picks randomly one of the
+organization users instead. The user account <strong>must</strong> have already been
+logged in Mergify dashboard once.</p></td>
 </tr>
 </tbody>
 </table>
