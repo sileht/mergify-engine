@@ -149,13 +149,13 @@ put under the <code class="docutils literal notranslate"><span class="pre">actio
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">users</span></code></p></td>
-<td><p>list of <a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Regular Expression</span></a></p></td>
+<td><p>list of <a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td></td>
 <td><p>The users to assign to the pull request.</p></td>
 </tr>
 </tbody>
 </table>
-<p>As the list of <code class="docutils literal notranslate"><span class="pre">users</span></code> is based on <a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Regular Expression</span></a>, you can use
+<p>As the list of <code class="docutils literal notranslate"><span class="pre">users</span></code> is based on <a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a>, you can use
 e.g. <code class="docutils literal notranslate"><span class="pre">{{author}}</span></code> to assign the pull request to its author.</p>
 </div>
 <div class="section" id="backport">
@@ -291,7 +291,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Pr
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
-<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Regular Expression</span></a></p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td></td>
 <td><p>The message to write as a comment.</p></td>
 </tr>
@@ -322,7 +322,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Pr
 <td><p>The kind of review, can be <code class="docutils literal notranslate"><span class="pre">APPROVE</span></code>, <code class="docutils literal notranslate"><span class="pre">REQUEST_CHANGES</span></code>, <code class="docutils literal notranslate"><span class="pre">COMMENT</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
-<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Regular Expression</span></a></p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td></td>
 <td><p>The message to write as a comment.</p></td>
 </tr>
@@ -348,7 +348,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Pr
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
-<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Regular Expression</span></a></p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">automatically</span> <span class="pre">closed</span> <span class="pre">by</span> <span class="pre">Mergify.</span></code></p></td>
 <td><p>The message to write as a comment after closing the pull request.</p></td>
 </tr>
@@ -427,7 +427,7 @@ done. If set to a list, each item should be the GitHub login of a user
 whose review will be removed.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
-<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Regular Expression</span></a></p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">request</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">modified.</span></code></p></td>
 <td><p>The message to post when dismissing the review.</p></td>
 </tr>
@@ -608,7 +608,7 @@ by writing using the <a class="reference internal" href="configuration.html#data
 <span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
-<p>Check the <a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Regular Expression</span></a> for more details on the format.</p>
+<p>Check the <a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a> for more details on the format.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This feature only works when <code class="docutils literal notranslate"><span class="pre">commit_message</span></code> is set to <code class="docutils literal notranslate"><span class="pre">default</span></code>.</p>
