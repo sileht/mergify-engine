@@ -107,6 +107,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#request-reviews">request_reviews</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#rebase">rebase</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#update">update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#check-runs">check-runs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="commands.html">⚙️ Commands</a></li>
@@ -708,6 +709,52 @@ done to the that branch while Mergify is rebasing will be lost.</p>
 <div class="section" id="update">
 <span id="update-action"></span><h2>update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">update</span></code> action updates the pull request against its base branch.</p>
+</div>
+<div class="section" id="check-runs">
+<h2>check-runs<a class="headerlink" href="#check-runs" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div></p>
+</div></blockquote>
+<p>The <code class="docutils literal notranslate"><span class="pre">check-runs</span></code> action adds items in a pull request checks. The check-run
+status is <code class="docutils literal notranslate"><span class="pre">success</span></code> when all conditions match, otherwise, it is set to
+<code class="docutils literal notranslate"><span class="pre">failure</span></code>.</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 40%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Key Name</p></th>
+<th class="head"><p>Value Type</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Value Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">title</span></code></p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
+<td></td>
+<td><p>The title of the check.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">summary</span></code></p></td>
+<td><p><a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a></p></td>
+<td></td>
+<td><p>The summary of the check.</p></td>
+</tr>
+</tbody>
+</table>
+<p>As the <code class="docutils literal notranslate"><span class="pre">title</span></code> and <code class="docutils literal notranslate"><span class="pre">summary</span></code> use on <a class="reference internal" href="configuration.html#data-type-template"><span class="std std-ref">Template</span></a>, you can
+benefit from any pull request attributes e.g. <code class="docutils literal notranslate"><span class="pre">{{author}}</span></code> and also these
+additional variables:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">check_rule_name</span> <span class="pre">}}</span></code> the name of the rule that triggered this action.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">check_succeed</span> <span class="pre">}}</span></code> will be <code class="docutils literal notranslate"><span class="pre">True</span></code> if all conditions matches otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">check_conditions</span> <span class="pre">}}</span></code> the list of all conditions with a checkbox marked if the condition match</p></li>
+</ul>
+</div></blockquote>
 </div>
 </div>
 
