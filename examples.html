@@ -577,7 +577,7 @@ request.</p>
       <span class="p p-Indicator">-</span> <span class="s">&quot;body~=(?m)^(Fixes|Related|Closes)</span><span class="nv"> </span><span class="s">(MERGIFY-ENGINE|MRGFY)-&quot;</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">-label=ignore-guidelines</span>
     <span class="nt">actions</span><span class="p">:</span>
-      <span class="nt">check-runs</span><span class="p">:</span>
+      <span class="nt">post_check</span><span class="p">:</span>
         <span class="nt">title</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Pull request</span> <span class="c1">#{{ number }} does{% if not check_succeed %} not{% endif %} follow our guidelines</span>
         <span class="nt">summary</span><span class="p">:</span> <span class="p p-Indicator">|</span>
           <span class="no">My awesome pull request guidelines:</span>
