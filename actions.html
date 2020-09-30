@@ -660,14 +660,23 @@ request.</p>
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">users</span></code></p></td>
-<td><p>list of string</p></td>
+<td><p>list of string or dictionary of login and weight</p></td>
 <td></td>
 <td><p>The username to request reviews from.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">teams</span></code></p></td>
-<td><p>list of string</p></td>
+<td><p>list of string or dictionary of login and weight</p></td>
 <td></td>
 <td><p>The team name to request reviews from.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">random_count</span></code></p></td>
+<td><p>integer between 1 and 15</p></td>
+<td></td>
+<td><p>Pick random users and teams from the provided lists. When
+<code class="docutils literal notranslate"><span class="pre">random_count</span></code> is specified, <code class="docutils literal notranslate"><span class="pre">users</span></code> and <code class="docutils literal notranslate"><span class="pre">teams</span></code> can be a
+dictionary where the key is the login and the value is the weight to use.</p>
+<p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-success">Essential Plan feature 💪</span></a></div></p>
+</td>
 </tr>
 </tbody>
 </table>
