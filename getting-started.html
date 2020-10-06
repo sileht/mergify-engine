@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
   
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,7 +25,6 @@
     <script src="_static/language_data.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script type="text/javascript" src="_static/mergify.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -114,9 +114,9 @@
           <div class="body" role="main">
             
   <div class="section" id="getting-started">
-<h1>➡️ Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<h1>➡️ Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline"> 🔗</a></h1>
 <div class="section" id="installation">
-<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline"> 🔗</a></h2>
 <p>Mergify is a GitHub Application that operates on your GitHub repositories to
 automate them. You need to install Mergify on your GitHub Account to have it
 working.</p>
@@ -143,9 +143,9 @@ Mergify access to. Select any repository you like, or all if you wish.</p></li>
 <img alt="Mergify dashboard once setup" class="align-center" src="_images/dashboard-setup.png" />
 </div>
 <div class="section" id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline"> 🔗</a></h2>
 <div class="section" id="the-configuration-file">
-<h3>The Configuration File<a class="headerlink" href="#the-configuration-file" title="Permalink to this headline">¶</a></h3>
+<h3>The Configuration File<a class="headerlink" href="#the-configuration-file" title="Permalink to this headline"> 🔗</a></h3>
 <p>Mergify applies rules to your pull requests. To do that, you need to create a
 Mergify configuration in each repository where Mergify is used.</p>
 <p>The configuration file should be created in the root directory of the
@@ -154,7 +154,7 @@ repository and named either <code class="docutils literal notranslate"><span cla
 file format is entirely documented in <a class="reference internal" href="configuration.html#configuration-file-format"><span class="std std-ref">🔖 Configuration File</span></a>.</p>
 </div>
 <div class="section" id="the-rules">
-<h3>The Rules<a class="headerlink" href="#the-rules" title="Permalink to this headline">¶</a></h3>
+<h3>The Rules<a class="headerlink" href="#the-rules" title="Permalink to this headline"> 🔗</a></h3>
 <p>The configuration file is composed of a main key named <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code>
 which contains a list of rules.</p>
 <p>Each rule is composed of 3 elements:</p>
@@ -168,7 +168,7 @@ matches the <em>conditions</em>.</p></li>
 </ul>
 </div>
 <div class="section" id="a-first-rule">
-<h3>A First Rule<a class="headerlink" href="#a-first-rule" title="Permalink to this headline">¶</a></h3>
+<h3>A First Rule<a class="headerlink" href="#a-first-rule" title="Permalink to this headline"> 🔗</a></h3>
 <p>Let’s create a first rule that will merge the pull request as soon as it has
 been approved by one contributor.</p>
 <p>Here’s the relevant configuration file content:</p>
@@ -199,7 +199,7 @@ use.</p></li>
 <a class="reference internal" href="configuration.html#configuration-file-format"><span class="std std-ref">🔖 Configuration File</span></a>.</p>
 </div>
 <div class="section" id="creating-the-configuration-file">
-<h3>Creating the Configuration File<a class="headerlink" href="#creating-the-configuration-file" title="Permalink to this headline">¶</a></h3>
+<h3>Creating the Configuration File<a class="headerlink" href="#creating-the-configuration-file" title="Permalink to this headline"> 🔗</a></h3>
 <p>You can create your configuration file using your favorite text editor.
 However, writing and testing in the config editor can be easier. Go to <a class="reference external" href="https://dashboard.mergify.io">your
 Mergify dashboard</a> and pick the config editor for
@@ -222,7 +222,7 @@ requests.</p>
 </div>
 </div>
 <div class="section" id="understanding-mergify-check-report">
-<h2>Understanding Mergify Check Report<a class="headerlink" href="#understanding-mergify-check-report" title="Permalink to this headline">¶</a></h2>
+<h2>Understanding Mergify Check Report<a class="headerlink" href="#understanding-mergify-check-report" title="Permalink to this headline"> 🔗</a></h2>
 <p>When a pull request is created in the repository, Mergify posts a status check
 about the state of the pull request according to the defined rules.</p>
 <img alt="status check" class="align-center" src="_images/mergify-checks-status.png" />
@@ -237,7 +237,7 @@ check.</p>
 configured actions and e.g. merges the pull request.</p>
 </div>
 <div class="section" id="controlling-mergify-with-commands">
-<h2>Controlling Mergify with Commands<a class="headerlink" href="#controlling-mergify-with-commands" title="Permalink to this headline">¶</a></h2>
+<h2>Controlling Mergify with Commands<a class="headerlink" href="#controlling-mergify-with-commands" title="Permalink to this headline"> 🔗</a></h2>
 <p>Mergify also exposes a set of <a class="reference internal" href="commands.html#commands"><span class="std std-ref">⚙️ Commands</span></a> that you can trigger by commenting on
 the pull request.</p>
 <img alt="status check" class="align-center" src="_images/mergify-command.png" />

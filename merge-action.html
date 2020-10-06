@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
   
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,7 +25,6 @@
     <script src="_static/language_data.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script type="text/javascript" src="_static/mergify.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -112,17 +112,17 @@
           <div class="body" role="main">
             
   <div class="section" id="delving-into-the-merge-action">
-<span id="mastering-merge"></span><h1>🔀 Delving into the Merge Action<a class="headerlink" href="#delving-into-the-merge-action" title="Permalink to this headline">¶</a></h1>
+<span id="mastering-merge"></span><h1>🔀 Delving into the Merge Action<a class="headerlink" href="#delving-into-the-merge-action" title="Permalink to this headline"> 🔗</a></h1>
 <p>Mergify comes with some powerful options when it comes to merging your pull
 requests. While all the options are listed in the <a class="reference internal" href="actions.html#merge-action"><span class="std std-ref">merge</span></a> action
 documentation, some of the combinations are detailed here.</p>
 <div class="section" id="strict-merge">
-<span id="id1"></span><h2>Strict Merge<a class="headerlink" href="#strict-merge" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>Strict Merge<a class="headerlink" href="#strict-merge" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <cite>strict merge</cite> option enables a workflow that prevents merging broken
 pull requests. That situation can arise when outdated pull requests are being
 merged in their base branch.</p>
 <div class="section" id="understanding-the-problem">
-<h3>Understanding the Problem<a class="headerlink" href="#understanding-the-problem" title="Permalink to this headline">¶</a></h3>
+<h3>Understanding the Problem<a class="headerlink" href="#understanding-the-problem" title="Permalink to this headline"> 🔗</a></h3>
 <p>To understand the problem, imagine the following situation:</p>
 <ul class="simple">
 <li><p>The base branch (e.g., <code class="docutils literal notranslate"><span class="pre">master</span></code>) has its continuous integration testing
@@ -158,7 +158,7 @@ pass this new test.</p>
 continuous integration system, and probably your software. Good job! 🤕</p>
 </div>
 <div class="section" id="the-strict-merge-solution">
-<h3>The Strict Merge Solution<a class="headerlink" href="#the-strict-merge-solution" title="Permalink to this headline">¶</a></h3>
+<h3>The Strict Merge Solution<a class="headerlink" href="#the-strict-merge-solution" title="Permalink to this headline"> 🔗</a></h3>
 <p>The <cite>strict merge</cite> option solves that issue by updating any pull request that
 is not up-to-date with its base branch before being merged. That forces the
 continuous integration system to test again the pull request with the new code.</p>
@@ -177,7 +177,7 @@ sequentially, and they will be updated on top of each other.</p>
 be merged by the engine, e.g., when all the <cite>conditions</cite> are validated.</p>
 </div>
 <div class="section" id="enabling-the-strict-option">
-<h3>Enabling the Strict Option<a class="headerlink" href="#enabling-the-strict-option" title="Permalink to this headline">¶</a></h3>
+<h3>Enabling the Strict Option<a class="headerlink" href="#enabling-the-strict-option" title="Permalink to this headline"> 🔗</a></h3>
 <p>To enable <cite>strict merge</cite>, you need to set the value of <code class="docutils literal notranslate"><span class="pre">strict</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>
 in the <a class="reference internal" href="actions.html#merge-action"><span class="std std-ref">merge</span></a> action. For example:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">pull_request_rules</span><span class="p">:</span>
@@ -193,7 +193,7 @@ in the <a class="reference internal" href="actions.html#merge-action"><span clas
 </div>
 </div>
 <div class="section" id="viewing-the-merge-queue">
-<h3>Viewing the Merge Queue<a class="headerlink" href="#viewing-the-merge-queue" title="Permalink to this headline">¶</a></h3>
+<h3>Viewing the Merge Queue<a class="headerlink" href="#viewing-the-merge-queue" title="Permalink to this headline"> 🔗</a></h3>
 <p>When several pull request are ready to be merged and the <cite>strict</cite> option is
 enabled, Mergify needs to merge serially. To do that, it handles a <cite>merge
 gqueue</cite>. This queue can be seen from your dashboard:</p>
@@ -203,7 +203,7 @@ gqueue</cite>. This queue can be seen from your dashboard:</p>
 </div>
 </div>
 <div class="section" id="git-merge-workflow-and-mergify-equivalent-configuration">
-<h2>Git merge workflow and Mergify equivalent configuration<a class="headerlink" href="#git-merge-workflow-and-mergify-equivalent-configuration" title="Permalink to this headline">¶</a></h2>
+<h2>Git merge workflow and Mergify equivalent configuration<a class="headerlink" href="#git-merge-workflow-and-mergify-equivalent-configuration" title="Permalink to this headline"> 🔗</a></h2>
 <p>There is a lot of different ways to merge pull requests. You can replicate many
 <code class="docutils literal notranslate"><span class="pre">git</span></code> based merge when using Mergify — here’s a list of equivalence.</p>
 <div class="admonition note">

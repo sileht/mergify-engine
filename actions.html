@@ -11,6 +11,7 @@
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
   
     <link rel="stylesheet" href="_static/basic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -24,7 +25,6 @@
     <script src="_static/language_data.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script type="text/javascript" src="_static/mergify.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
 
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -124,14 +124,14 @@
           <div class="body" role="main">
             
   <div class="section" id="actions">
-<span id="id1"></span><h1>🚀 Actions<a class="headerlink" href="#actions" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>🚀 Actions<a class="headerlink" href="#actions" title="Permalink to this headline"> 🔗</a></h1>
 <p>When a pull request matches the list of <a class="reference internal" href="conditions.html#conditions"><span class="std std-ref">🎯 Conditions</span></a> of a rule, the
 actions configured in that rule are executed by Mergify. The actions should be
 put under the <code class="docutils literal notranslate"><span class="pre">actions</span></code> key in the <code class="docutils literal notranslate"><span class="pre">pull_request_rules</span></code> entry — see
 <a class="reference internal" href="configuration.html#configuration-file-format"><span class="std std-ref">🔖 Configuration File</span></a>.</p>
 <p>The list of available actions is listed below, with their parameters:</p>
 <div class="section" id="assign">
-<span id="assign-action"></span><h2>assign<a class="headerlink" href="#assign" title="Permalink to this headline">¶</a></h2>
+<span id="assign-action"></span><h2>assign<a class="headerlink" href="#assign" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">assign</span></code> action assigns users to the pull request.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -159,7 +159,7 @@ put under the <code class="docutils literal notranslate"><span class="pre">actio
 e.g. <code class="docutils literal notranslate"><span class="pre">{{author}}</span></code> to assign the pull request to its author.</p>
 </div>
 <div class="section" id="backport">
-<span id="backport-action"></span><h2>backport<a class="headerlink" href="#backport" title="Permalink to this headline">¶</a></h2>
+<span id="backport-action"></span><h2>backport<a class="headerlink" href="#backport" title="Permalink to this headline"> 🔗</a></h2>
 <p><div style="text-align: right"><span class="badge badge-secondary">Not available with Enterprise Plan 🏢</span></div></p>
 <p>It is common for software to have (some of) their major versions maintained
 over an extended period. Developers usually create stable branches that are
@@ -224,7 +224,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Es
 </div>
 </div>
 <div class="section" id="copy">
-<h2>copy<a class="headerlink" href="#copy" title="Permalink to this headline">¶</a></h2>
+<h2>copy<a class="headerlink" href="#copy" title="Permalink to this headline"> 🔗</a></h2>
 <p><div style="text-align: right"><span class="badge badge-secondary">Not available with Enterprise Plan 🏢</span></div></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">copy</span></code> action creates a copy of the pull request targetting other branches.</p>
 <table class="colwidths-given docutils align-default">
@@ -275,7 +275,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Es
 </div>
 </div>
 <div class="section" id="comment">
-<span id="comment-action"></span><h2>comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h2>
+<span id="comment-action"></span><h2>comment<a class="headerlink" href="#comment" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">comment</span></code> action adds a comment to the pull request.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -301,7 +301,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Es
 </table>
 </div>
 <div class="section" id="review">
-<span id="review-action"></span><h2>review<a class="headerlink" href="#review" title="Permalink to this headline">¶</a></h2>
+<span id="review-action"></span><h2>review<a class="headerlink" href="#review" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">review</span></code> action reviews the pull request.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -332,7 +332,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Es
 </table>
 </div>
 <div class="section" id="close">
-<span id="close-action"></span><h2>close<a class="headerlink" href="#close" title="Permalink to this headline">¶</a></h2>
+<span id="close-action"></span><h2>close<a class="headerlink" href="#close" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">close</span></code> action closes the pull request without merging it.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -358,7 +358,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Es
 </table>
 </div>
 <div class="section" id="delete-head-branch">
-<span id="delete-head-branch-action"></span><h2>delete_head_branch<a class="headerlink" href="#delete-head-branch" title="Permalink to this headline">¶</a></h2>
+<span id="delete-head-branch-action"></span><h2>delete_head_branch<a class="headerlink" href="#delete-head-branch" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">delete_head_branch</span></code> action deletes the head branch of the pull request,
 that is the branch which hosts the commits. This only works if the branch is
 stored in the same repository that the pull request target, i.e., if the pull
@@ -392,7 +392,7 @@ dependent pull requests.</p></td>
 </table>
 </div>
 <div class="section" id="dismiss-reviews">
-<span id="dismiss-reviews-action"></span><h2>dismiss_reviews<a class="headerlink" href="#dismiss-reviews" title="Permalink to this headline">¶</a></h2>
+<span id="dismiss-reviews-action"></span><h2>dismiss_reviews<a class="headerlink" href="#dismiss-reviews" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">dismiss_reviews</span></code> action removes reviews done by collaborators when the
 pull request is updated. This is especially useful to make sure that a review
 does not stay when the branch is updated (e.g., new commits are added or the
@@ -437,7 +437,7 @@ whose review will be removed.</p></td>
 </table>
 </div>
 <div class="section" id="label">
-<span id="label-action"></span><h2>label<a class="headerlink" href="#label" title="Permalink to this headline">¶</a></h2>
+<span id="label-action"></span><h2>label<a class="headerlink" href="#label" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">label</span></code> action can add or remove <a class="reference external" href="https://help.github.com/articles/about-labels/">labels</a> from a pull request.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -473,7 +473,7 @@ whose review will be removed.</p></td>
 </table>
 </div>
 <div class="section" id="merge">
-<span id="merge-action"></span><h2>merge<a class="headerlink" href="#merge" title="Permalink to this headline">¶</a></h2>
+<span id="merge-action"></span><h2>merge<a class="headerlink" href="#merge" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">merge</span></code> action merges the pull request into its base branch. The
 <code class="docutils literal notranslate"><span class="pre">merge</span></code> action takes the following parameter:</p>
 <table class="colwidths-given docutils align-default">
@@ -574,13 +574,13 @@ end of the title.</p></li>
 </tbody>
 </table>
 <div class="section" id="branch-protection-settings">
-<h3>Branch Protection Settings<a class="headerlink" href="#branch-protection-settings" title="Permalink to this headline">¶</a></h3>
+<h3>Branch Protection Settings<a class="headerlink" href="#branch-protection-settings" title="Permalink to this headline"> 🔗</a></h3>
 <p>Note that Mergify will always respect the branch protection settings. When the
 conditions match and the <code class="docutils literal notranslate"><span class="pre">merge</span></code> action runs, Mergify waits for the branch
 protection to be validated before merging the pull request.</p>
 </div>
 <div class="section" id="defining-the-commit-message">
-<span id="commit-message"></span><h3>Defining the Commit Message<a class="headerlink" href="#defining-the-commit-message" title="Permalink to this headline">¶</a></h3>
+<span id="commit-message"></span><h3>Defining the Commit Message<a class="headerlink" href="#defining-the-commit-message" title="Permalink to this headline"> 🔗</a></h3>
 <p>When a pull request is merged using the <code class="docutils literal notranslate"><span class="pre">squash</span></code> or <code class="docutils literal notranslate"><span class="pre">merge</span></code> method, you can
 override the default commit message. To that end, you need to add a section in
 the pull request body that starts with <code class="docutils literal notranslate"><span class="pre">Commit</span> <span class="pre">Message</span></code>.</p>
@@ -617,7 +617,7 @@ by writing using the <a class="reference internal" href="configuration.html#data
 </div>
 </div>
 <div class="section" id="strict-rebase">
-<span id="id2"></span><h3>Strict Rebase<a class="headerlink" href="#strict-rebase" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>Strict Rebase<a class="headerlink" href="#strict-rebase" title="Permalink to this headline"> 🔗</a></h3>
 <p>Using the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> method for the strict merge has many drawbacks:</p>
 <ul class="simple">
 <li><p>It doesn’t work for private forked repositories.</p></li>
@@ -640,7 +640,7 @@ the push, while it actually has been executed by Mergify.</p></li>
 </div>
 </div>
 <div class="section" id="request-reviews">
-<span id="request-reviews-action"></span><h2>request_reviews<a class="headerlink" href="#request-reviews" title="Permalink to this headline">¶</a></h2>
+<span id="request-reviews-action"></span><h2>request_reviews<a class="headerlink" href="#request-reviews" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">request_reviews</span></code> action requests reviews from users for the pull
 request.</p>
 <table class="colwidths-given docutils align-default">
@@ -686,7 +686,7 @@ Weight must be between 1 and 65535 included.</p>
 </div>
 </div>
 <div class="section" id="rebase">
-<span id="rebase-action"></span><h2>rebase<a class="headerlink" href="#rebase" title="Permalink to this headline">¶</a></h2>
+<span id="rebase-action"></span><h2>rebase<a class="headerlink" href="#rebase" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">rebase</span></code> action will rebase the pull request against its base branch.</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -721,11 +721,11 @@ done to the that branch while Mergify is rebasing will be lost.</p>
 </div>
 </div>
 <div class="section" id="update">
-<span id="update-action"></span><h2>update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<span id="update-action"></span><h2>update<a class="headerlink" href="#update" title="Permalink to this headline"> 🔗</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">update</span></code> action updates the pull request against its base branch.</p>
 </div>
 <div class="section" id="post-check">
-<h2>post_check<a class="headerlink" href="#post-check" title="Permalink to this headline">¶</a></h2>
+<h2>post_check<a class="headerlink" href="#post-check" title="Permalink to this headline"> 🔗</a></h2>
 <p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div></p>
 <p>The <code class="docutils literal notranslate"><span class="pre">post_check</span></code> action adds an item in a pull request check list. The check
 status is <code class="docutils literal notranslate"><span class="pre">success</span></code> when all conditions match, otherwise, it is set to
