@@ -352,7 +352,7 @@ repository organization.
 This only matches reviewers with <code class="docutils literal notranslate"><span class="pre">admin</span></code> or <code class="docutils literal notranslate"><span class="pre">write</span></code> permission
 on the repository.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status-success</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">check-success</span></code></p></td>
 <td><p>list of string</p></td>
 <td><p>The list of status checks that successfuly passed for the pull request.
 This is the name of a <em>status check</em> such as
@@ -360,7 +360,7 @@ This is the name of a <em>status check</em> such as
 <cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-checks">About Status Checks</a> for more
 details.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">status-neutral</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">check-neutral</span></code></p></td>
 <td><p>list of string</p></td>
 <td><p>The list of status checks that are neutral for the pull request.
 This is the name of a <em>status check</em> such as
@@ -368,7 +368,7 @@ This is the name of a <em>status check</em> such as
 <cite>Travis CI - Pull Request</cite>. See <a class="reference internal" href="#about-status-checks">About Status Checks</a> for more
 details.</p></td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">status-failure</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">check-failure</span></code></p></td>
 <td><p>list of string</p></td>
 <td><p>The list of status checks that failed for the pull request.
 This is the name of a <em>status check</em> such as
@@ -491,7 +491,7 @@ rules in order to have this.</p>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge if author is foo</span>
     <span class="nt">conditions</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author=foo</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=Travis CI - Pull Request</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Travis CI - Pull Request</span>
     <span class="nt">actions</span><span class="p">:</span>
       <span class="nt">merge</span><span class="p">:</span>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
@@ -499,7 +499,7 @@ rules in order to have this.</p>
   <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">automatic merge if author is bar</span>
     <span class="nt">conditions</span><span class="p">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">author=bar</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=Travis CI - Pull Request</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Travis CI - Pull Request</span>
     <span class="nt">actions</span><span class="p">:</span>
       <span class="nt">merge</span><span class="p">:</span>
         <span class="nt">method</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">merge</span>
@@ -510,7 +510,7 @@ rules in order to have this.</p>
 <h2>About Status Checks<a class="headerlink" href="#about-status-checks" title="Permalink to this headline"> 🔗</a></h2>
 <div class="section" id="generic-status-check">
 <h3>Generic Status Check<a class="headerlink" href="#generic-status-check" title="Permalink to this headline"> 🔗</a></h3>
-<p>When using the <code class="docutils literal notranslate"><span class="pre">status-success</span></code>, <code class="docutils literal notranslate"><span class="pre">status-neutral</span></code> and <code class="docutils literal notranslate"><span class="pre">status-failure</span></code>
+<p>When using the <code class="docutils literal notranslate"><span class="pre">check-success</span></code>, <code class="docutils literal notranslate"><span class="pre">check-neutral</span></code> and <code class="docutils literal notranslate"><span class="pre">check-failure</span></code>
 conditions, you need to use the name of your check service. This can be find by
 opening an existing pull request and scrolling down near the <code class="docutils literal notranslate"><span class="pre">Merge</span></code> button.</p>
 <img alt="Status check example" src="_images/status-check-example.png" />
@@ -518,7 +518,7 @@ opening an existing pull request and scrolling down near the <code class="docuti
 example above, it should be <code class="docutils literal notranslate"><span class="pre">Uno.UI</span> <span class="pre">-</span> <span class="pre">CI</span></code>. A condition that would make sure
 this checks succeed before doing any action should be written as:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=Uno.UI - CI</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=Uno.UI - CI</span>
 </pre></div>
 </div>
 </div>
@@ -529,7 +529,7 @@ GitHub Action, only the job name is used.</p>
 <img alt="Status check GitHub Action example" src="_images/status-check-gh-example.png" />
 <p>In the example above, it would be <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">job</span> <span class="pre">to</span> <span class="pre">say</span> <span class="pre">hello</span></code>:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">status-success=A job to say hello</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">check-success=A job to say hello</span>
 </pre></div>
 </div>
 </div>
@@ -549,15 +549,15 @@ broken) and therefore be totally absent.</p></li>
 are expected for your condition to be valid. Therefore you should write
 something like:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">conditions</span><span class="p">:</span>
-  <span class="p p-Indicator">-</span> <span class="nt">status-success=build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Windows</span>
-  <span class="p p-Indicator">-</span> <span class="nt">status-success=build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Linux</span>
+  <span class="p p-Indicator">-</span> <span class="nt">check-success=build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Windows</span>
+  <span class="p p-Indicator">-</span> <span class="nt">check-success=build</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">Linux</span>
 </pre></div>
 </div>
 <p><strong>Do not</strong> use conditions such as:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">#status-failure=0</span></code>, because this will be true as soon as the pull request is
+<li><p><code class="docutils literal notranslate"><span class="pre">#check-failure=0</span></code>, because this will be true as soon as the pull request is
 created and before any service report its status (see point 2. above).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">status-success~=build</span></code> while expecting this to wait for all status checks
+<li><p><code class="docutils literal notranslate"><span class="pre">check-success~=build</span></code> while expecting this to wait for all status checks
 that have <code class="docutils literal notranslate"><span class="pre">build</span></code> in their name (see point 1. above).</p></li>
 </ul>
 <p>Such conditions won’t do what you want them to do.</p>
