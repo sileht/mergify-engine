@@ -596,16 +596,28 @@ when <a class="reference internal" href="merge-action.html#strict-merge"><span c
 <p>Note that the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> method has many drawbacks, see <a class="reference internal" href="#strict-rebase"><span class="std std-ref">Strict Rebase</span></a>.</p>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bot_account</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">merge_bot_account</span></code></p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>Mergify can impersonate a GitHub user to merge pull request.
+If no <code class="docutils literal notranslate"><span class="pre">merge_bot_account</span></code> is set, Mergify will merge the pull request
+itself. The user account <strong>must</strong> have already been
+logged in Mergify dashboard once.</p>
+<p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div></p>
+</td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">update_bot_account</span></code></p></td>
 <td><p>string</p></td>
 <td></td>
 <td><p>For certain actions, such as rebasing branches, Mergify has to
 impersonate a GitHub user. You can specify the account to use with this
-option. If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify picks randomly one of the
+option. If no <code class="docutils literal notranslate"><span class="pre">update_bot_account</span></code> is set, Mergify picks randomly one of the
 organization users instead. The user account <strong>must</strong> have already been
-logged in Mergify dashboard once.</p></td>
+logged in Mergify dashboard once.</p>
+<p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div></p>
+</td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">priority</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">priority</span></code></p></td>
 <td><p>1 &lt;= integer &lt;= 10000 or <code class="docutils literal notranslate"><span class="pre">low</span></code> or <code class="docutils literal notranslate"><span class="pre">medium</span></code> or <code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
 <td><p>This set the priority of the pull request in the queue when <code class="docutils literal notranslate"><span class="pre">smart</span></code>
@@ -614,7 +626,7 @@ logged in Mergify dashboard once.</p></td>
 <p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div></p>
 </td>
 </tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">commit_message</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">commit_message</span></code></p></td>
 <td><p>string</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">default</span></code></p></td>
 <td><p>Defines what commit message to use when merging using the <code class="docutils literal notranslate"><span class="pre">squash</span></code> or
@@ -760,12 +772,12 @@ Weight must be between 1 and 65535 included.</p>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">bot_account</span></code></p></td>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">update_bot_account</span></code></p></td>
 <td><p>string</p></td>
 <td></td>
 <td><p>For certain actions, such as rebasing branches, Mergify has to
 impersonate a GitHub user. You can specify the account to use with this
-option. If no <code class="docutils literal notranslate"><span class="pre">bot_account</span></code> is set, Mergify picks randomly one of the
+option. If no <code class="docutils literal notranslate"><span class="pre">update_bot_account</span></code> is set, Mergify picks randomly one of the
 organization users instead. The user account <strong>must</strong> have already been
 logged in Mergify dashboard once.</p></td>
 </tr>
