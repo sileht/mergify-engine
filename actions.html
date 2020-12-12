@@ -264,7 +264,7 @@ to.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ignore_conflicts</span></code></p></td>
 <td><p>Boolean</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><p>Whether to create the pull requests even if they are conflicts when
 cherry-picking the commits.</p></td>
 </tr>
@@ -316,7 +316,7 @@ available for <a class="reference external" href="https://mergify.io/pricing">Es
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ignore_conflicts</span></code></p></td>
 <td><p>Boolean</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
 <td><p>Whether to create the pull requests even if they are conflicts when
 cherry-picking the commits.</p></td>
 </tr>
@@ -454,8 +454,8 @@ using <a class="reference internal" href="conditions.html#conditions"><span clas
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">force</span></code></p></td>
 <td><p>Boolean</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">False</span></code></p></td>
-<td><p>If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, the branch will be deleted even if another pull
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the branch will be deleted even if another pull
 request depends on the head branch. GitHub will therefore close the
 dependent pull requests.</p></td>
 </tr>
@@ -485,17 +485,17 @@ branch is rebased).</p>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">approved</span></code></p></td>
 <td><p>Boolean or list of string</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p>If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, all the approving reviews will be removed when the
-pull request is updated. If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, nothing will be done. If
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, all the approving reviews will be removed when the
+pull request is updated. If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, nothing will be done. If
 set to a list, each item should be the GitHub login of a user whose
 review will be removed.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">changes_requested</span></code></p></td>
 <td><p>Boolean or list of string</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">True</span></code></p></td>
-<td><p>If set to <code class="docutils literal notranslate"><span class="pre">True</span></code>, all the reviews requesting changes will be removed
-when the pull request is updated. If set to <code class="docutils literal notranslate"><span class="pre">False</span></code>, nothing will be
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code></p></td>
+<td><p>If set to <code class="docutils literal notranslate"><span class="pre">true</span></code>, all the reviews requesting changes will be removed
+when the pull request is updated. If set to <code class="docutils literal notranslate"><span class="pre">false</span></code>, nothing will be
 done. If set to a list, each item should be the GitHub login of a user
 whose review will be removed.</p></td>
 </tr>
@@ -846,7 +846,7 @@ additional variables:</p>
 <blockquote>
 <div><ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">check_rule_name</span> <span class="pre">}}</span></code> the name of the rule that triggered this action.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">check_succeed</span> <span class="pre">}}</span></code> will be <code class="docutils literal notranslate"><span class="pre">True</span></code> if all conditions matches otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">check_succeed</span> <span class="pre">}}</span></code> is <code class="docutils literal notranslate"><span class="pre">True</span></code> if all conditions matches otherwise <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">{{</span> <span class="pre">check_conditions</span> <span class="pre">}}</span></code> the list of all conditions with a checkbox marked if the condition match</p></li>
 </ul>
 </div></blockquote>
