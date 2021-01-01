@@ -603,13 +603,13 @@ base branch.</p></li>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">strict_method</span></code></p></td>
 <td><p>string</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">merge</span></code></p></td>
-<td><p>Update method to use to update the pull request with its base branch
+<td><p>Method to use to update the pull request with its base branch
 when <a class="reference internal" href="merge-action.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> is enabled. Possible values:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">merge</span></code> to merge the base branch into the pull request.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">rebase</span></code> to rebase the pull request against its base branch.</p></li>
 </ul>
-<p>Note that the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> method has many drawbacks, see <a class="reference internal" href="#strict-rebase"><span class="std std-ref">Strict Rebase</span></a>.</p>
+<p>Note that the <code class="docutils literal notranslate"><span class="pre">rebase</span></code> method has some drawbacks, see <a class="reference internal" href="#strict-rebase"><span class="std std-ref">Strict Rebase</span></a>.</p>
 </td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">merge_bot_account</span></code></p></td>
@@ -636,7 +636,7 @@ logged in Mergify dashboard once.</p>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">priority</span></code></p></td>
 <td><p>1 &lt;= integer &lt;= 10000 or <code class="docutils literal notranslate"><span class="pre">low</span></code> or <code class="docutils literal notranslate"><span class="pre">medium</span></code> or <code class="docutils literal notranslate"><span class="pre">high</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">medium</span></code></p></td>
-<td><p>This set the priority of the pull request in the queue when <code class="docutils literal notranslate"><span class="pre">smart</span></code>
+<td><p>This sets the priority of the pull request in the queue when <code class="docutils literal notranslate"><span class="pre">smart</span></code>
 <a class="reference internal" href="merge-action.html#strict-merge"><span class="std std-ref">Strict Merge</span></a> is enabled. The pull request with the highest priority is merged first.
 <code class="docutils literal notranslate"><span class="pre">low</span></code>, <code class="docutils literal notranslate"><span class="pre">medium</span></code>, <code class="docutils literal notranslate"><span class="pre">high</span></code> are aliases for <code class="docutils literal notranslate"><span class="pre">1000</span></code>, <code class="docutils literal notranslate"><span class="pre">2000</span></code>, <code class="docutils literal notranslate"><span class="pre">3000</span></code>.</p>
 <p><div style="text-align: right"><a href="https://mergify.io/pricing" target="_blank"><span class="badge badge-warning">Premium Plan feature 🦾</span></a></div></p>
