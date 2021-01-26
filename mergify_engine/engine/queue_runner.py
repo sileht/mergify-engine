@@ -10,10 +10,11 @@
 # WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
 # License for the specific language governing permissions and limitations
 # under the License.
-
+import typing
 
 from mergify_engine import check_api
 from mergify_engine import context
+from mergify_engine import github_types
 from mergify_engine import merge_train
 from mergify_engine import rules
 from mergify_engine import utils
@@ -53,6 +54,37 @@ async def are_checks_pending(
     return False
 
 
+async def have_unexpected_changes(
+    ctxt: context.Context, car: merge_train.TrainCar
+) -> bool:
+    expected_commits = (len(car.parent_pull_request_numbers) + 1) * 2
+    have_bad_events = any(
+        (
+            s["event_type"] == "pull_request"
+            and typing.cast(github_types.GitHubEventPullRequest, s["data"])["action"]
+            in ["closed", "reopened"]
+            for s in ctxt.sources
+        )
+    )
+    unexpected_changes = (
+        ctxt.pull["base"]["sha"] != car.initial_current_base_sha
+        or ctxt.pull["commits"] != expected_commits
+        or ctxt.have_been_synchronized()
+        or have_bad_events
+    )
+    ctxt.log.debug(
+        "train car have unexpected changes ? %s",
+        unexpected_changes,
+        base=ctxt.pull["base"]["sha"],
+        expected_base=car.initial_current_base_sha,
+        commits=ctxt.pull["commits"],
+        expected_commits=expected_commits,
+        have_been_synchronized=ctxt.have_been_synchronized(),
+        have_bad_events=have_bad_events,
+    )
+    return unexpected_changes
+
+
 async def handle(queue_rules: rules.QueueRules, ctxt: context.Context) -> None:
     # FIXME: Maybe create a command to force the retesting to put back the PR in the queue?
 
@@ -81,9 +113,16 @@ async def handle(queue_rules: rules.QueueRules, ctxt: context.Context) -> None:
         return
 
     evaluated_queue_rule = await queue_rule.get_pull_request_rule(ctxt)
-    mergeable = await train.is_synced_with_the_base_branch()
 
-    if not mergeable:
+    unexpected_changes = await have_unexpected_changes(ctxt, car)
+    if unexpected_changes:
+        mergeable = False
+    else:
+        mergeable = await train.is_synced_with_the_base_branch()
+
+    if unexpected_changes:
+        status = check_api.Conclusion.FAILURE
+    elif not mergeable:
         status = check_api.Conclusion.PENDING
     elif not evaluated_queue_rule.missing_conditions:
         status = check_api.Conclusion.SUCCESS
@@ -95,14 +134,26 @@ async def handle(queue_rules: rules.QueueRules, ctxt: context.Context) -> None:
     ctxt.log.info(
         "train car temporary pull request evaluation",
         evaluated_queue_rule=evaluated_queue_rule,
+        unexpected_changes=unexpected_changes,
         mergeable=mergeable,
         status=status,
     )
 
     await car.update_summaries(
-        ctxt, status, queue_rule=evaluated_queue_rule, will_be_reset=not mergeable
+        ctxt,
+        status,
+        queue_rule=evaluated_queue_rule,
+        will_be_reset=not mergeable,
     )
 
     if not mergeable:
         ctxt.log.info("train will be reset")
         await train.reset()
+
+    if unexpected_changes:
+        await ctxt.client.post(
+            f"{ctxt.base_url}/issues/{ctxt.pull['number']}/comments",
+            json={
+                "body": "This pull request have unexpected changes, the whole train will be reseted"
+            },
+        )

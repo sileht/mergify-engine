@@ -15,12 +15,16 @@
 # under the License.
 import dataclasses
 
+import daiquiri
 import jinja2.exceptions
 import jinja2.sandbox
 import voluptuous
 
 from mergify_engine import context
 from mergify_engine import github_types
+
+
+LOG = daiquiri.getLogger(__name__)
 
 
 _JINJA_ENV = jinja2.sandbox.SandboxedEnvironment(undefined=jinja2.StrictUndefined)
@@ -91,6 +95,7 @@ _DUMMY_PR = DummyPullRequest(
                 "merged_at": None,
                 "draft": False,
                 "merge_commit_sha": None,
+                "commits": 0,
                 "mergeable_state": "unknown",
                 "rebaseable": False,
                 "user": {

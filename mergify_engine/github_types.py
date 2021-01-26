@@ -181,6 +181,7 @@ class GitHubPullRequest(GitHubIssueOrPullRequest):
     mergeable_state: GitHubPullRequestMergeableState
     html_url: str
     title: str
+    commits: int
 
 
 # https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events/webhook-events-and-payloads
